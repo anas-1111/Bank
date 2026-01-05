@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{1DB032A2-FE46-4ABB-B7AB-894E3B45CF3E}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{330A9165-413E-4A82-9490-09FA75A27E94}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -546,7 +546,8 @@ where client_id in (select distinct client_id from [STG].[Transactions])</proper
                       lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_type]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[card_number]"
-                      cachedDataType="i4"
+                      cachedDataType="wstr"
+                      cachedLength="20"
                       cachedName="card_number"
                       externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
                       lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_number]" />
@@ -623,7 +624,8 @@ where client_id in (select distinct client_id from [STG].[Transactions])</proper
                       name="card_type" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="20"
                       name="card_number" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[expires]"
@@ -885,9 +887,10 @@ where client_id in (select distinct client_id from [STG].[Transactions])</proper
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_number]"
-                      dataType="i4"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
+                      length="20"
                       lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_number]"
                       name="card_number"
                       truncationRowDisposition="FailComponent">
