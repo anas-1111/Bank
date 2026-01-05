@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Source_To_ODS"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{A7184C9B-75AF-4F0E-9EC0-3AA4B04E66F9}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{B8B3F86D-B2BB-4DAB-9FE8-3FEAA03C7B98}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -162,7 +162,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;Initial Catalog=Bank;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Source_To_ODS-{A106949A-2656-4B9D-BAE3-C92DD7434996}LocalHost.Bank;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Bank;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Source_To_ODS-{A106949A-2656-4B9D-BAE3-C92DD7434996}LocalHost.Bank;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -188,16 +188,16 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="mcc_code"
-              DTS:DTSID="{62D78597-7DA5-4D47-8236-1EF27B4FFF14}"
+              DTS:DTSID="{A94050D5-FFCE-4256-AE1E-AE66188D9C89}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
+              DTS:MaximumWidth="200"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="description"
-              DTS:DTSID="{E57B3DEB-799F-4F11-BC1C-A3A968537011}"
+              DTS:DTSID="{2B48D841-1DDA-4DA5-AEFB-75C3E711F453}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1311,7 +1311,7 @@
                           refId="Package\Fill Tables\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].Columns[description]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="50"
+                          cachedLength="200"
                           cachedName="description"
                           externalMetadataColumnId="Package\Fill Tables\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].ExternalColumns[description]"
                           lineageId="Package\Fill Tables\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[description]" />
@@ -1328,7 +1328,7 @@
                           refId="Package\Fill Tables\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].ExternalColumns[description]"
                           codePage="1252"
                           dataType="str"
-                          length="50"
+                          length="200"
                           name="description" />
                       </externalMetadataColumns>
                     </input>
@@ -1418,7 +1418,7 @@
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Fill Tables\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].ExternalColumns[description]"
-                          length="50"
+                          length="200"
                           lineageId="Package\Fill Tables\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[description]"
                           name="description"
                           truncationRowDisposition="FailComponent">
@@ -1446,7 +1446,7 @@
                           refId="Package\Fill Tables\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].ExternalColumns[description]"
                           codePage="1252"
                           dataType="str"
-                          length="50"
+                          length="200"
                           name="description" />
                       </externalMetadataColumns>
                     </output>
