@@ -1,0 +1,753 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/5/2026 4:57:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LD1MQL2"
+  DTS:CreatorName="DESKTOP-LD1MQL2\Anas"
+  DTS:DTSID="{0B18CE01-739A-47E3-A1F1-7AE10A39D5F4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="STG_To_DWH"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C483517B-2F8C-4360-9C3E-42EFCF75B94A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Bank]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A11E346F-3462-4EFB-B5A7-952847A24566}"
+      DTS:ObjectName="LocalHost.Bank">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Bank;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-STG_To_DWH-{A11E346F-3462-4EFB-B5A7-952847A24566}LocalHost.Bank;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A0D027B0-1779-4326-8A37-40230C2DB3B7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Fill DWH Users"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fill DWH Users"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[DimUsers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Fill DWH Users.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[address]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="address"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[address]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[latitude]"
+                      cachedDataType="r8"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[longitude]"
+                      cachedDataType="r8"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[current_age]"
+                      cachedDataType="i4"
+                      cachedName="current_age"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[current_age]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[retirement_age]"
+                      cachedDataType="i4"
+                      cachedName="retirement_age"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[RetirementAge]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[retirement_age]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[birth_year]"
+                      cachedDataType="i4"
+                      cachedName="birth_year"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[YearOfBirth]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[birth_year]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[birth_month]"
+                      cachedDataType="i4"
+                      cachedName="birth_month"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[MonthOfBirth]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[birth_month]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[per_capita_income]"
+                      cachedDataType="i4"
+                      cachedName="per_capita_income"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[PerCapitaIncome]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[per_capita_income]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[yearly_income]"
+                      cachedDataType="i4"
+                      cachedName="yearly_income"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[yearly_income]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[total_debt]"
+                      cachedDataType="i4"
+                      cachedName="total_debt"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[TotalDebt]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[total_debt]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[credit_score]"
+                      cachedDataType="i4"
+                      cachedName="credit_score"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[CreditScore]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[credit_score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].Columns[num_credit_cards]"
+                      cachedDataType="i4"
+                      cachedName="num_credit_cards"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[NumOfCreditCards]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[num_credit_cards]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[UserKey]"
+                      dataType="i4"
+                      name="UserKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      dataType="i4"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[RetirementAge]"
+                      dataType="i4"
+                      name="RetirementAge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[YearOfBirth]"
+                      dataType="i4"
+                      name="YearOfBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[MonthOfBirth]"
+                      dataType="i4"
+                      name="MonthOfBirth" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="10"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="200"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[PerCapitaIncome]"
+                      dataType="i4"
+                      name="PerCapitaIncome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
+                      dataType="i4"
+                      name="YearlyIncome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[TotalDebt]"
+                      dataType="i4"
+                      name="TotalDebt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[CreditScore]"
+                      dataType="i4"
+                      name="CreditScore" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[NumOfCreditCards]"
+                      dataType="i4"
+                      name="NumOfCreditCards" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Fill DWH Users.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill DWH Users.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill DWH Users.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill DWH Users.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Users STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Users STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Users]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Users STG.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[current_age]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[current_age]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[current_age]"
+                      name="current_age"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[retirement_age]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[retirement_age]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[retirement_age]"
+                      name="retirement_age"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[birth_year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[birth_year]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[birth_year]"
+                      name="birth_year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[birth_month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[birth_month]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[birth_month]"
+                      name="birth_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[address]"
+                      name="address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[per_capita_income]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[per_capita_income]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[per_capita_income]"
+                      name="per_capita_income"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[yearly_income]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[yearly_income]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[yearly_income]"
+                      name="yearly_income"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[total_debt]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[total_debt]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[total_debt]"
+                      name="total_debt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[credit_score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[credit_score]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[credit_score]"
+                      name="credit_score"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[num_credit_cards]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[num_credit_cards]"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].Columns[num_credit_cards]"
+                      name="num_credit_cards"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[current_age]"
+                      dataType="i4"
+                      name="current_age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[retirement_age]"
+                      dataType="i4"
+                      name="retirement_age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[birth_year]"
+                      dataType="i4"
+                      name="birth_year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[birth_month]"
+                      dataType="i4"
+                      name="birth_month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      dataType="wstr"
+                      length="10"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      dataType="wstr"
+                      length="50"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[per_capita_income]"
+                      dataType="i4"
+                      name="per_capita_income" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[yearly_income]"
+                      dataType="i4"
+                      name="yearly_income" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[total_debt]"
+                      dataType="i4"
+                      name="total_debt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[credit_score]"
+                      dataType="i4"
+                      name="credit_score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output].ExternalColumns[num_credit_cards]"
+                      dataType="i4"
+                      name="num_credit_cards" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[current_age]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[current_age]"
+                      name="current_age" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[retirement_age]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[retirement_age]"
+                      name="retirement_age" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[birth_year]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[birth_year]"
+                      name="birth_year" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[birth_month]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[birth_month]"
+                      name="birth_month" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[address]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[address]"
+                      name="address" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[latitude]"
+                      name="latitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[longitude]"
+                      name="longitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[per_capita_income]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[per_capita_income]"
+                      name="per_capita_income" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[yearly_income]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[yearly_income]"
+                      name="yearly_income" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[total_debt]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[total_debt]"
+                      name="total_debt" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[credit_score]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[credit_score]"
+                      name="credit_score" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[num_credit_cards]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[num_credit_cards]"
+                      name="num_credit_cards" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Fill DWH Users.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Users STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="239.5,79.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Data Flow Task\Users STG"
+          TopLeft="156.5,69.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Data Flow Task\Fill DWH Users"
+          TopLeft="385.5,132.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="284.5,90.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="101,63"
+              Start="0,0"
+              End="93.5,63">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.5,0"
+                    Point2="50.5,0"
+                    Point3="50.5,4" />
+                  <mssgle:LineSegment
+                    End="50.5,59" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.5,59"
+                    Point2="50.5,63"
+                    Point3="54.5,63" />
+                  <mssgle:LineSegment
+                    End="93.5,63" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Users STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Fill DWH Users">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
