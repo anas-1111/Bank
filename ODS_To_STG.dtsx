@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{9E3FD961-8A4A-4904-BC0A-C9600C2248E1}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{1DB032A2-FE46-4ABB-B7AB-894E3B45CF3E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=.;Initial Catalog=Bank;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{287CA94E-511B-418D-8C47-8646568B9E6C}LocalHost.Bank;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Bank;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{287CA94E-511B-418D-8C47-8646568B9E6C}LocalHost.Bank;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -35,7 +35,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{2AB6B0C5-3A93-436A-A9AD-932C35990FF8}"
+      DTS:DTSID="{CD6F91C2-BF0C-49C6-8A68-CCE9D7C356F1}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -45,6 +45,648 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Data Flow Task\Cards ODS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Cards ODS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [ODS].[Cards]
+where client_id in (select distinct client_id from [STG].[Transactions])</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Cards ODS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[client_id]"
+                      name="client_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_brand]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_brand]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_brand]"
+                      name="card_brand"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_type]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_type]"
+                      name="card_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_number]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_number]"
+                      name="card_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[expires]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[expires]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[expires]"
+                      name="expires"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[cvv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[cvv]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[cvv]"
+                      name="cvv"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[has_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[has_chip]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[has_chip]"
+                      name="has_chip"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[num_cards_issued]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[num_cards_issued]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[num_cards_issued]"
+                      name="num_cards_issued"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[credit_limit]"
+                      name="credit_limit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[acct_open_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[acct_open_date]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[acct_open_date]"
+                      name="acct_open_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[year_pin_last_changed]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]"
+                      name="year_pin_last_changed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_on_dark_web]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_on_dark_web]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_on_dark_web]"
+                      name="card_on_dark_web"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="client_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_brand]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[expires]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="expires" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[cvv]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="cvv" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[has_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="has_chip" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[num_cards_issued]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="num_cards_issued" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_limit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[acct_open_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="acct_open_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[year_pin_last_changed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="year_pin_last_changed" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].ExternalColumns[card_on_dark_web]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_on_dark_web" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[client_id]"
+                      name="client_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_brand]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_brand]"
+                      name="card_brand" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_type]"
+                      name="card_type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_number]"
+                      name="card_number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[expires]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[expires]"
+                      name="expires" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[cvv]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[cvv]"
+                      name="cvv" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[has_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[has_chip]"
+                      name="has_chip" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[num_cards_issued]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[num_cards_issued]"
+                      name="num_cards_issued" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
+                      name="credit_limit" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[acct_open_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[acct_open_date]"
+                      name="acct_open_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[year_pin_last_changed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[year_pin_last_changed]"
+                      name="year_pin_last_changed" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_on_dark_web]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[card_on_dark_web]"
+                      name="card_on_dark_web" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Cards STG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Cards STG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Cards]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Cards STG.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[client_id]"
+                      cachedDataType="i4"
+                      cachedName="client_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[client_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[card_brand]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="card_brand"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_brand]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_brand]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[card_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="card_type"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_type]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[card_number]"
+                      cachedDataType="i4"
+                      cachedName="card_number"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[expires]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="expires"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[expires]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[expires]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[cvv]"
+                      cachedDataType="i4"
+                      cachedName="cvv"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[cvv]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[cvv]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[has_chip]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="has_chip"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[has_chip]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[has_chip]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[num_cards_issued]"
+                      cachedDataType="i4"
+                      cachedName="num_cards_issued"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[num_cards_issued]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[num_cards_issued]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[credit_limit]"
+                      cachedDataType="i4"
+                      cachedName="credit_limit"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[credit_limit]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[credit_limit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[acct_open_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="acct_open_date"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[acct_open_date]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[acct_open_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[year_pin_last_changed]"
+                      cachedDataType="i4"
+                      cachedName="year_pin_last_changed"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[year_pin_last_changed]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[year_pin_last_changed]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].Columns[card_on_dark_web]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="card_on_dark_web"
+                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_on_dark_web]"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_on_dark_web]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      dataType="i4"
+                      name="client_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_brand]"
+                      dataType="wstr"
+                      length="50"
+                      name="card_brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="card_type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
+                      dataType="i4"
+                      name="card_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[expires]"
+                      dataType="dbTimeStamp"
+                      name="expires" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[cvv]"
+                      dataType="i4"
+                      name="cvv" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[has_chip]"
+                      dataType="wstr"
+                      length="50"
+                      name="has_chip" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[num_cards_issued]"
+                      dataType="i4"
+                      name="num_cards_issued" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[credit_limit]"
+                      dataType="i4"
+                      name="credit_limit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[acct_open_date]"
+                      dataType="dbTimeStamp"
+                      name="acct_open_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[year_pin_last_changed]"
+                      dataType="i4"
+                      name="year_pin_last_changed" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input].ExternalColumns[card_on_dark_web]"
+                      dataType="wstr"
+                      length="50"
+                      name="card_on_dark_web" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Data Flow Task\Edit Data Type"
               componentClassID="Microsoft.DataConvert"
@@ -63,91 +705,91 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="id"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[date]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="date"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]" />
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[client_id]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="client_id"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]" />
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[client_id]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[card_id]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[card_brand]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="card_id"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]" />
+                      cachedName="card_brand"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_brand]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[amount]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[card_type]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="amount"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]" />
+                      cachedName="card_type"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_type]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[use_chip]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[card_number]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="use_chip"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]" />
+                      cachedName="card_number"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_number]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[merchant_id]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[expires]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="merchant_id"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]" />
+                      cachedName="expires"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[expires]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[merchant_city]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[cvv]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="merchant_city"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]" />
+                      cachedName="cvv"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[cvv]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[merchant_state]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[has_chip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="merchant_state"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]" />
+                      cachedName="has_chip"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[has_chip]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[zip]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[num_cards_issued]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="zip"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]" />
+                      cachedName="num_cards_issued"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[num_cards_issued]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[mcc]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[credit_limit]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="mcc"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]" />
+                      cachedName="credit_limit"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[credit_limit]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[errors]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[acct_open_date]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="errors"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]" />
+                      cachedName="acct_open_date"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[acct_open_date]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[target]"
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[year_pin_last_changed]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="target"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]" />
+                      cachedName="year_pin_last_changed"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input].Columns[card_on_dark_web]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="card_on_dark_web"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_on_dark_web]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -172,27 +814,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[date]"
-                      dataType="dateTime"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[date]"
-                      name="date"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[id]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -212,7 +834,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[client_id]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -220,60 +842,20 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_id]"
-                      name="card_id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[amount]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[amount]"
-                      name="amount"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[use_chip]"
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_brand]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[use_chip]"
-                      name="use_chip"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_brand]"
+                      name="card_brand"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_brand]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -281,40 +863,20 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_id]"
-                      name="merchant_id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_city]"
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_city]"
-                      name="merchant_city"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_type]"
+                      name="card_type"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_type]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -322,20 +884,80 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_state]"
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_number]"
+                      name="card_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_number]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[expires]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[expires]"
+                      name="expires"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[expires]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[cvv]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[cvv]"
+                      name="cvv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[cvv]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[has_chip]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_state]"
-                      name="merchant_state"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[has_chip]"
+                      name="has_chip"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[has_chip]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -343,19 +965,19 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[zip]"
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[num_cards_issued]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[zip]"
-                      name="zip"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[num_cards_issued]"
+                      name="num_cards_issued"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[num_cards_issued]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -363,19 +985,19 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[mcc]"
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[credit_limit]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[mcc]"
-                      name="mcc"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[credit_limit]"
+                      name="credit_limit"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[credit_limit]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -383,41 +1005,60 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[errors]"
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[acct_open_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[acct_open_date]"
+                      name="acct_open_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[acct_open_date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[year_pin_last_changed]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[year_pin_last_changed]"
+                      name="year_pin_last_changed"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_on_dark_web]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[errors]"
-                      name="errors"
+                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_on_dark_web]"
+                      name="card_on_dark_web"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[target]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="10"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[target]"
-                      name="target"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[card_on_dark_web]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -452,27 +1093,27 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Fill Nulls &amp; Replace $"
+              refId="Package\Data Flow Task\Edit Dates &amp; Replace $"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Fill Nulls &amp; Replace $"
+              name="Edit Dates &amp; Replace $"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]"
+                  refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[merchant_state]"
+                      refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Inputs[Derived Column Input].Columns[expires]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="merchant_state"
+                      cachedName="expires"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[expires]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -480,7 +1121,574 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]}) ? "ONLINE" : #{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]}</property>
+                          name="Expression">([SUBSTRING](#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[expires]},4,4) + "-" + [SUBSTRING](#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[expires]},1,2) + "-01")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(SUBSTRING(expires,4,4) + "-" + SUBSTRING(expires,1,2) + "-01")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Inputs[Derived Column Input].Columns[credit_limit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="credit_limit"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[credit_limit]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[credit_limit]},"$","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(credit_limit,"$","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Inputs[Derived Column Input].Columns[acct_open_date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="acct_open_date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[acct_open_date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([SUBSTRING](#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[acct_open_date]},4,4) + "-" + [SUBSTRING](#{Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output].Columns[acct_open_date]},1,2) + "-01")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(SUBSTRING(acct_open_date,4,4) + "-" + SUBSTRING(acct_open_date,1,2) + "-01")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Edit Dates &amp; Replace $.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Edit Dates &amp; Replace $.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Edit Dates &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Edit Dates &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Edit Dates &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Cards STG.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Edit Dates &amp; Replace $.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Edit Dates &amp; Replace $.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Cards ODS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transactions To STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2AB6B0C5-3A93-436A-A9AD-932C35990FF8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transactions To STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Transactions To STG\Edit Data Type"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Edit Data Type"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[client_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="client_id"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[card_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="card_id"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[amount]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="amount"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[use_chip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="use_chip"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[merchant_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="merchant_id"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[merchant_city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="merchant_city"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[merchant_state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="merchant_state"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="zip"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[mcc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="mcc"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[errors]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="errors"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]" />
+                    <inputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input].Columns[target]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="target"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[date]"
+                      dataType="dateTime"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[client_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[client_id]"
+                      name="client_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[card_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[card_id]"
+                      name="card_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[amount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[amount]"
+                      name="amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[use_chip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[use_chip]"
+                      name="use_chip"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_id]"
+                      name="merchant_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_city]"
+                      name="merchant_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_state]"
+                      name="merchant_state"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[zip]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[zip]"
+                      name="zip"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[mcc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[mcc]"
+                      name="mcc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[errors]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[errors]"
+                      name="errors"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[target]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[target]"
+                      name="target"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transactions To STG\Fill Nulls &amp; Replace $"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Fill Nulls &amp; Replace $"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[merchant_state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="merchant_state"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]}) ? "ONLINE" : #{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -490,14 +1698,14 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[zip]"
+                      refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[zip]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="zip"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -505,7 +1713,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]}) ? "-1" : #{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]}</property>
+                          name="Expression">[ISNULL](#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]}) ? "-1" : #{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -515,14 +1723,14 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[errors]"
+                      refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[errors]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="errors"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -530,7 +1738,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]}) ? "None" : #{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]}</property>
+                          name="Expression">[ISNULL](#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]}) ? "None" : #{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -540,14 +1748,14 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[amount]"
+                      refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input].Columns[amount]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="amount"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -555,7 +1763,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]},"$","")</property>
+                          name="Expression">[REPLACE](#{Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]},"$","")</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -570,31 +1778,31 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Outputs[Derived Column Output]"
+                  refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output]"
+                  refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -603,7 +1811,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Transactions ODS"
+              refId="Package\Transactions To STG\Transactions ODS"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -652,7 +1860,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Transactions ODS.Connections[OleDbConnection]"
+                  refId="Package\Transactions To STG\Transactions ODS.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="The OLE DB runtime connection used to access the database."
@@ -660,229 +1868,229 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output]"
+                  refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[id]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[id]"
                       name="id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[date]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[date]"
                       name="date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[client_id]"
                       name="client_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[card_id]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[card_id]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[card_id]"
                       name="card_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[amount]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[amount]"
                       name="amount"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[use_chip]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[use_chip]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[use_chip]"
                       name="use_chip"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_id]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_id]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_id]"
                       name="merchant_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_city]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_city]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_city]"
                       name="merchant_city"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_state]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_state]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[merchant_state]"
                       name="merchant_state"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[zip]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[zip]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[zip]"
                       name="zip"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[mcc]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[mcc]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[mcc]"
                       name="mcc"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[errors]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[errors]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[errors]"
                       name="errors"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[target]"
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[target]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].Columns[target]"
                       name="target"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="client_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[card_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[card_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="card_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[amount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="amount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[use_chip]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[use_chip]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="use_chip" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="merchant_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_city]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_city]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="merchant_city" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_state]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[merchant_state]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="merchant_state" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[zip]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[zip]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="zip" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[mcc]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[mcc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="mcc" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[errors]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[errors]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="errors" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[target]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output].ExternalColumns[target]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -890,111 +2098,111 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[id]"
                       name="id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[date]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[date]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[date]"
                       name="date" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[client_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[client_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[client_id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[client_id]"
                       name="client_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[card_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[card_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[card_id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[card_id]"
                       name="card_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[amount]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[amount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[amount]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[amount]"
                       name="amount" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[use_chip]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[use_chip]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[use_chip]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[use_chip]"
                       name="use_chip" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_id]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_id]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_id]"
                       name="merchant_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_city]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_city]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_city]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_city]"
                       name="merchant_city" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_state]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_state]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_state]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[merchant_state]"
                       name="merchant_state" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[zip]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[zip]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[zip]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[zip]"
                       name="zip" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[mcc]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[mcc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[mcc]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[mcc]"
                       name="mcc" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[errors]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[errors]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[errors]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[errors]"
                       name="errors" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[target]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[target]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[target]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[target]"
                       name="target" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1003,7 +2211,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Transactions STG"
+              refId="Package\Transactions To STG\Transactions STG"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -1060,7 +2268,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Transactions STG.Connections[OleDbConnection]"
+                  refId="Package\Transactions To STG\Transactions STG.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1068,152 +2276,152 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input]"
+                  refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[id]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[id]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[date]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[date]"
                       cachedDataType="dateTime"
                       cachedName="date"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[date]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[date]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[date]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[client_id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[client_id]"
                       cachedDataType="i4"
                       cachedName="client_id"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[client_id]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[client_id]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[card_id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[card_id]"
                       cachedDataType="i4"
                       cachedName="card_id"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[card_id]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[card_id]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[card_id]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[card_id]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[amount]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[amount]"
                       cachedDataType="r8"
                       cachedName="amount"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[amount]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[amount]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[use_chip]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[use_chip]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="use_chip"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[use_chip]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[use_chip]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[use_chip]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[use_chip]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[merchant_id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[merchant_id]"
                       cachedDataType="i4"
                       cachedName="merchant_id"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_id]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_id]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[merchant_city]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[merchant_city]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="merchant_city"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_city]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_city]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_city]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_city]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[merchant_state]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[merchant_state]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="merchant_state"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_state]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_state]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_state]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[merchant_state]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[zip]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[zip]"
                       cachedDataType="i4"
                       cachedName="zip"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[zip]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[zip]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[mcc]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[mcc]"
                       cachedDataType="i4"
                       cachedName="mcc"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[mcc]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[mcc]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[mcc]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[mcc]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[errors]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[errors]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="errors"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[errors]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[errors]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[errors]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[errors]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].Columns[target]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].Columns[target]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="target"
-                      externalMetadataColumnId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[target]"
-                      lineageId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output].Columns[target]" />
+                      externalMetadataColumnId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[target]"
+                      lineageId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output].Columns[target]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[id]"
                       dataType="i4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[date]"
                       dataType="dbTimeStamp"
                       name="date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
                       dataType="i4"
                       name="client_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[card_id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[card_id]"
                       dataType="i4"
                       name="card_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
                       dataType="r8"
                       name="amount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[use_chip]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[use_chip]"
                       dataType="wstr"
                       length="50"
                       name="use_chip" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
                       dataType="i4"
                       name="merchant_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_city]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_city]"
                       dataType="wstr"
                       length="50"
                       name="merchant_city" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_state]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[merchant_state]"
                       dataType="wstr"
                       length="50"
                       name="merchant_state" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
                       dataType="i4"
                       name="zip" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[mcc]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[mcc]"
                       dataType="i4"
                       name="mcc" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[errors]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[errors]"
                       dataType="wstr"
                       length="50"
                       name="errors" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[target]"
+                      refId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input].ExternalColumns[target]"
                       dataType="wstr"
                       length="10"
                       name="target" />
@@ -1222,22 +2430,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Transactions STG.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Transactions To STG\Transactions STG.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Transactions To STG\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transactions To STG\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transactions To STG\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transactions To STG\Transactions STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1248,20 +2456,20 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
-              endId="Package\Data Flow Task\Transactions STG.Inputs[OLE DB Destination Input]"
+              refId="Package\Transactions To STG.Paths[Data Conversion Output]"
+              endId="Package\Transactions To STG\Transactions STG.Inputs[OLE DB Destination Input]"
               name="Data Conversion Output"
-              startId="Package\Data Flow Task\Edit Data Type.Outputs[Data Conversion Output]" />
+              startId="Package\Transactions To STG\Edit Data Type.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\Edit Data Type.Inputs[Data Conversion Input]"
+              refId="Package\Transactions To STG.Paths[Derived Column Output]"
+              endId="Package\Transactions To STG\Edit Data Type.Inputs[Data Conversion Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Outputs[Derived Column Output]" />
+              startId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]"
+              refId="Package\Transactions To STG.Paths[OLE DB Source Output]"
+              endId="Package\Transactions To STG\Fill Nulls &amp; Replace $.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Transactions ODS.Outputs[OLE DB Source Output]" />
+              startId="Package\Transactions To STG\Transactions ODS.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1280,27 +2488,31 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
+          Size="176,42"
+          Id="Package\Transactions To STG"
+          TopLeft="155.5,38.5" />
+        <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="155.5,54.5" />
+          TopLeft="169.5,101.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\Transactions To STG">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="162,42"
-          Id="Package\Data Flow Task\Transactions ODS"
+          Id="Package\Transactions To STG\Transactions ODS"
           TopLeft="51.5,9.5" />
         <NodeLayout
           Size="178,42"
-          Id="Package\Data Flow Task\Fill Nulls &amp; Replace $"
+          Id="Package\Transactions To STG\Fill Nulls &amp; Replace $"
           TopLeft="276.5,66.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          Id="Package\Transactions To STG.Paths[OLE DB Source Output]"
           TopLeft="213.5,30.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1335,10 +2547,10 @@
         </EdgeLayout>
         <NodeLayout
           Size="149,42"
-          Id="Package\Data Flow Task\Edit Data Type"
+          Id="Package\Transactions To STG\Edit Data Type"
           TopLeft="520.5,111.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          Id="Package\Transactions To STG.Paths[Derived Column Output]"
           TopLeft="454.5,87.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1373,10 +2585,10 @@
         </EdgeLayout>
         <NodeLayout
           Size="161,42"
-          Id="Package\Data Flow Task\Transactions STG"
+          Id="Package\Transactions To STG\Transactions STG"
           TopLeft="261.5,186.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          Id="Package\Transactions To STG.Paths[Data Conversion Output]"
           TopLeft="595,153.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1413,7 +2625,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Transactions ODS">
+    design-time-name="Package\Transactions To STG\Transactions ODS">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1426,7 +2638,154 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Transactions STG">
+    design-time-name="Package\Transactions To STG\Transactions STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task\Cards ODS"
+          TopLeft="47.5,22.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Data Flow Task\Edit Dates &amp; Replace $"
+          TopLeft="253.5,62.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="177.5,43.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76,40"
+              Start="0,0"
+              End="68.5,40">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34,0"
+                    Point2="38,0"
+                    Point3="38,4" />
+                  <mssgle:LineSegment
+                    End="38,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38,36"
+                    Point2="38,40"
+                    Point3="42,40" />
+                  <mssgle:LineSegment
+                    End="68.5,40" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Data Flow Task\Edit Data Type"
+          TopLeft="504.5,110.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="440.5,83.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64,48"
+              Start="0,0"
+              End="56.5,48">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28,0"
+                    Point2="32,0"
+                    Point3="32,4" />
+                  <mssgle:LineSegment
+                    End="32,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32,44"
+                    Point2="32,48"
+                    Point3="36,48" />
+                  <mssgle:LineSegment
+                    End="56.5,48" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Data Flow Task\Cards STG"
+          TopLeft="296.5,187.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="579,152.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-218.5,35"
+              Start="0,0"
+              End="-218.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="-4,17.5" />
+                  <mssgle:LineSegment
+                    End="-214.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-214.5,17.5"
+                    Point2="-218.5,17.5"
+                    Point3="-218.5,21.5" />
+                  <mssgle:LineSegment
+                    End="-218.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Cards ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Cards STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
