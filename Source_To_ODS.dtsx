@@ -1,0 +1,3217 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/5/2026 1:45:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LD1MQL2"
+  DTS:CreatorName="DESKTOP-LD1MQL2\Anas"
+  DTS:DTSID="{3999C086-9DB1-4DF7-8D4F-F976300DE014}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Source_To_ODS"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{38F035D9-5946-4845-9555-7FA1B6E65EDB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Cards]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E0F8F42B-31C9-4186-9329-4C35BAB28F30}"
+      DTS:ObjectName="Cards">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Courses\GBG\Fraud\cards_data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{0D0D850B-5D3F-4E92-AE2C-D5B8A3133DA8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="client_id"
+              DTS:DTSID="{3360B162-F365-4EAA-AE85-62C0E7E05CE8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="card_brand"
+              DTS:DTSID="{3ABB4D81-D410-4C09-AD0C-5F86F5B00F29}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="card_type"
+              DTS:DTSID="{731EFD42-D094-4FFE-96AD-0AE00D78D986}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="card_number"
+              DTS:DTSID="{E2EF2BDC-DE10-4E3C-8056-7A3F9213B19A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="expires"
+              DTS:DTSID="{F9C3D6F7-72C2-4173-AFD6-D37521A37ADD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cvv"
+              DTS:DTSID="{EE5424E4-F818-4B56-8B60-C453CECFAD76}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="has_chip"
+              DTS:DTSID="{8F8BB3ED-0565-49CA-84CF-A22D59044B56}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="num_cards_issued"
+              DTS:DTSID="{D91EB2EF-3879-451A-88C1-47592AD2CE1B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="credit_limit"
+              DTS:DTSID="{483CC613-12DB-4777-B99D-04D02B704DCC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="acct_open_date"
+              DTS:DTSID="{C224C49E-7FE6-4FE1-A3AD-3E81C9496D01}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="year_pin_last_changed"
+              DTS:DTSID="{AD8A642E-4DB1-4FA5-8FA2-CDD64C1E8034}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="card_on_dark_web"
+              DTS:DTSID="{234ED1A0-DE81-4E79-8F6B-F6671EA6D134}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Bank]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A106949A-2656-4B9D-BAE3-C92DD7434996}"
+      DTS:ObjectName="LocalHost.Bank">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Bank;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Source_To_ODS-{A106949A-2656-4B9D-BAE3-C92DD7434996}LocalHost.Bank;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MCC Codes]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2F977BE8-167D-4AC7-8432-157734D752AA}"
+      DTS:ObjectName="MCC Codes">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Courses\GBG\Fraud\mcc_codes.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="mcc_code"
+              DTS:DTSID="{62D78597-7DA5-4D47-8236-1EF27B4FFF14}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="description"
+              DTS:DTSID="{E57B3DEB-799F-4F11-BC1C-A3A968537011}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Transactions]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{8D330FA1-2951-4893-90DB-BEB061C548D6}"
+      DTS:ObjectName="Transactions">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Courses\GBG\Fraud\sample_data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{5A29CDA6-D86B-4AAD-8905-CAAD84413DC9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{814291F0-CA1E-48B5-BC58-5F8B11F1F0F6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="client_id"
+              DTS:DTSID="{A65D9093-B026-468A-9F3E-832C37660568}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="card_id"
+              DTS:DTSID="{DF1386E2-3B3F-45D4-BC5E-84D7A14D5CF4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="amount"
+              DTS:DTSID="{AFA1BE3C-050B-45FE-99CA-31774BA7D508}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="use_chip"
+              DTS:DTSID="{BA772A21-A34B-4B10-8C6C-DD9D1FC82694}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="merchant_id"
+              DTS:DTSID="{DCB629ED-CCA0-4040-A562-53C206B70FB2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="merchant_city"
+              DTS:DTSID="{5EA16F79-4825-49E0-B6CB-7DE986685519}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="merchant_state"
+              DTS:DTSID="{B214DF91-83A4-43A7-AA1F-80547C8A9A7A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="zip"
+              DTS:DTSID="{C7CBB324-EAE0-4CF5-8802-DBCD3286C1CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="mcc"
+              DTS:DTSID="{51939273-A387-4F19-8984-3C4C24D59B99}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="errors"
+              DTS:DTSID="{9BE32C3A-3503-4563-8452-063BD14A8147}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="target"
+              DTS:DTSID="{D9CE3334-9159-457B-A21C-6C5A78E06D28}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Users]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{72845248-68DC-416C-B417-76E7B05F8F13}"
+      DTS:ObjectName="Users">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Courses\GBG\Fraud\users_data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{E7CABA33-31E6-49E4-848A-1036F52D3F4F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="current_age"
+              DTS:DTSID="{452E8ED9-B5DF-4820-AAC1-DCC1D527E5E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="retirement_age"
+              DTS:DTSID="{FAA93070-EAD5-451E-9CA4-01685E0FD7D5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="birth_year"
+              DTS:DTSID="{F0CFA7DA-30D7-48F9-BB9A-70C1E47D9965}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="birth_month"
+              DTS:DTSID="{0B0F8776-C544-49A9-A977-515FB7371B49}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="gender"
+              DTS:DTSID="{641D70D2-2B4C-41E5-A3A6-63B7760C6B71}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="address"
+              DTS:DTSID="{D8A9A172-ECD6-43D6-B810-466C10D59DE9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="latitude"
+              DTS:DTSID="{FE6527C0-5FD5-4737-985C-255410425CAB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="longitude"
+              DTS:DTSID="{3788FEE2-217B-42BA-B6A7-AB79FA4B2E90}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="per_capita_income"
+              DTS:DTSID="{3DC29313-78CB-48AC-889A-4815D244EEFE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="yearly_income"
+              DTS:DTSID="{618DAABA-6966-43BA-8F6D-1231FA4BF380}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="total_debt"
+              DTS:DTSID="{9634C026-816A-4294-9AE7-7B522AC94174}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="credit_score"
+              DTS:DTSID="{ABDE0AAB-0FB0-47A7-A413-8CAE35D4C2C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="num_credit_cards"
+              DTS:DTSID="{F7964E3F-EB02-4B2E-A5EB-43948907F2D0}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data To Ods"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6F2D8EEC-C6F0-48B7-A549-F9E2DFAD7075}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data To Ods"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data To Ods\Cards Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Cards Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ODS].[Cards]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\Cards Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[client_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="client_id"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[client_id]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[card_brand]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="card_brand"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_brand]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_brand]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[card_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="card_type"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_type]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_type]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[card_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="card_number"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_number]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[expires]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="expires"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[expires]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[expires]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[cvv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="cvv"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[cvv]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[cvv]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[has_chip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="has_chip"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_chip]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[has_chip]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[num_cards_issued]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="num_cards_issued"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[num_cards_issued]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[num_cards_issued]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[credit_limit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="credit_limit"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[credit_limit]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[credit_limit]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[acct_open_date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="acct_open_date"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[acct_open_date]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[acct_open_date]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[year_pin_last_changed]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="year_pin_last_changed"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[year_pin_last_changed]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[year_pin_last_changed]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].Columns[card_on_dark_web]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="card_on_dark_web"
+                      externalMetadataColumnId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_on_dark_web]"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_on_dark_web]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="client_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_brand]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_type" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[expires]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="expires" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[cvv]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="cvv" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[has_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="has_chip" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[num_cards_issued]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="num_cards_issued" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_limit" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[acct_open_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="acct_open_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[year_pin_last_changed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="year_pin_last_changed" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_on_dark_web]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_on_dark_web" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\Cards Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Cards Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Cards Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data To Ods\Cards File"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Cards File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\Cards File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Cards]"
+                  connectionManagerRefId="Package.ConnectionManagers[Cards]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[client_id]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[client_id]"
+                      name="client_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_brand]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_brand]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_brand]"
+                      name="card_brand"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_type]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_type]"
+                      name="card_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_number]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_number]"
+                      name="card_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[expires]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[expires]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[expires]"
+                      name="expires"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[cvv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[cvv]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[cvv]"
+                      name="cvv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[has_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[has_chip]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[has_chip]"
+                      name="has_chip"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[num_cards_issued]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[num_cards_issued]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[num_cards_issued]"
+                      name="num_cards_issued"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[credit_limit]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[credit_limit]"
+                      name="credit_limit"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[acct_open_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[acct_open_date]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[acct_open_date]"
+                      name="acct_open_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[year_pin_last_changed]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[year_pin_last_changed]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[year_pin_last_changed]"
+                      name="year_pin_last_changed"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_on_dark_web]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_on_dark_web]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].Columns[card_on_dark_web]"
+                      name="card_on_dark_web"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="client_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_brand]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_type" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[expires]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="expires" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[cvv]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="cvv" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[has_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="has_chip" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[num_cards_issued]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="num_cards_issued" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[credit_limit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_limit" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[acct_open_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="acct_open_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[year_pin_last_changed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="year_pin_last_changed" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output].ExternalColumns[card_on_dark_web]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_on_dark_web" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Cards File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Cards File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data To Ods\MCC Codes Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="MCC Codes Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[MCC Codes Destination]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\MCC Codes Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].Columns[mcc_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="mcc_code"
+                      externalMetadataColumnId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].ExternalColumns[mcc_code]"
+                      lineageId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[mcc_code]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].ExternalColumns[mcc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mcc_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\MCC Codes Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\MCC Codes Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\MCC Codes Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\MCC Codes Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\MCC Codes Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data To Ods\MCC Codes File"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="MCC Codes File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\MCC Codes File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MCC Codes]"
+                  connectionManagerRefId="Package.ConnectionManagers[MCC Codes]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[mcc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].ExternalColumns[mcc_code]"
+                      length="50"
+                      lineageId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[mcc_code]"
+                      name="mcc_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].ExternalColumns[description]"
+                      length="50"
+                      lineageId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].ExternalColumns[mcc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mcc_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output].ExternalColumns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data To Ods\Transactions Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Transactions Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ODS].[Transactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\Transactions Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[client_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="client_id"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[client_id]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[card_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="card_id"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_id]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[card_id]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[amount]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="amount"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[amount]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[use_chip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="use_chip"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[use_chip]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[use_chip]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[merchant_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="merchant_id"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_id]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[merchant_city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="merchant_city"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[merchant_city]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_city]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[merchant_state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="merchant_state"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[merchant_state]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_state]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="zip"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[zip]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[mcc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="mcc"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[mcc]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[mcc]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[errors]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="errors"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[errors]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[errors]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].Columns[target]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="target"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[target]"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[target]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="client_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[card_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="amount" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[use_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="use_chip" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="merchant_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[merchant_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="merchant_city" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[merchant_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="merchant_state" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[zip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="zip" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[mcc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mcc" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[errors]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="errors" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input].ExternalColumns[target]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="target" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\Transactions Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Transactions Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Transactions Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data To Ods\Transactions File"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Transactions File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\Transactions File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Transactions]"
+                  connectionManagerRefId="Package.ConnectionManagers[Transactions]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[client_id]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[client_id]"
+                      name="client_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[card_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[card_id]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[card_id]"
+                      name="card_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[amount]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[amount]"
+                      name="amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[use_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[use_chip]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[use_chip]"
+                      name="use_chip"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[merchant_id]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_id]"
+                      name="merchant_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[merchant_city]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_city]"
+                      name="merchant_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_state]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[merchant_state]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[merchant_state]"
+                      name="merchant_state"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[zip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[zip]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[zip]"
+                      name="zip"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[mcc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[mcc]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[mcc]"
+                      name="mcc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[errors]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[errors]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[errors]"
+                      name="errors"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[target]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[target]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].Columns[target]"
+                      name="target"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[client_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="client_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[card_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="card_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[amount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="amount" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[use_chip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="use_chip" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[merchant_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="merchant_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[merchant_city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="merchant_city" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[merchant_state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="merchant_state" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[zip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="zip" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[mcc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mcc" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[errors]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="errors" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output].ExternalColumns[target]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="target" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data To Ods\Users Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Users Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ODS].[Users]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\Users Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[current_age]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="current_age"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[current_age]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[current_age]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[retirement_age]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="retirement_age"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[retirement_age]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[retirement_age]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[birth_year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="birth_year"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[birth_year]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[birth_year]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[birth_month]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="birth_month"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[birth_month]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[birth_month]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="address"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[address]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[latitude]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[longitude]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[per_capita_income]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="per_capita_income"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[per_capita_income]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[per_capita_income]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[yearly_income]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="yearly_income"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[yearly_income]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[yearly_income]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[total_debt]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="total_debt"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_debt]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[total_debt]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[credit_score]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="credit_score"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[credit_score]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[credit_score]" />
+                    <inputColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].Columns[num_credit_cards]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="num_credit_cards"
+                      externalMetadataColumnId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[num_credit_cards]"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[num_credit_cards]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[current_age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="current_age" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[retirement_age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="retirement_age" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[birth_year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="birth_year" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[birth_month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="birth_month" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[per_capita_income]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="per_capita_income" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[yearly_income]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="yearly_income" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_debt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="total_debt" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[credit_score]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_score" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input].ExternalColumns[num_credit_cards]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="num_credit_cards" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\Users Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Users Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Users Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Users Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data To Ods\Users File"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Users File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data To Ods\Users File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Users]"
+                  connectionManagerRefId="Package.ConnectionManagers[Users]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[current_age]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[current_age]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[current_age]"
+                      name="current_age"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[retirement_age]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[retirement_age]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[retirement_age]"
+                      name="retirement_age"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[birth_year]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[birth_year]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[birth_year]"
+                      name="birth_year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[birth_month]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[birth_month]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[birth_month]"
+                      name="birth_month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[gender]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[address]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[address]"
+                      name="address"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[latitude]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[latitude]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[longitude]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[longitude]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[per_capita_income]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[per_capita_income]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[per_capita_income]"
+                      name="per_capita_income"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[yearly_income]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[yearly_income]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[yearly_income]"
+                      name="yearly_income"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[total_debt]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[total_debt]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[total_debt]"
+                      name="total_debt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[credit_score]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[credit_score]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[credit_score]"
+                      name="credit_score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[num_credit_cards]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[num_credit_cards]"
+                      length="50"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].Columns[num_credit_cards]"
+                      name="num_credit_cards"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[current_age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="current_age" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[retirement_age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="retirement_age" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[birth_year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="birth_year" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[birth_month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="birth_month" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[latitude]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[longitude]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[per_capita_income]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="per_capita_income" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[yearly_income]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="yearly_income" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[total_debt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="total_debt" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[credit_score]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_score" />
+                    <externalMetadataColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Output].ExternalColumns[num_credit_cards]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="num_credit_cards" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data To Ods\Users File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data To Ods\Users File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data To Ods\Users File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data To Ods.Paths[Flat File Source Output]"
+              endId="Package\Data To Ods\Transactions Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data To Ods\Transactions File.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data To Ods.Paths[Flat File Source Output1]"
+              endId="Package\Data To Ods\Cards Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data To Ods\Cards File.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data To Ods.Paths[Flat File Source Output2]"
+              endId="Package\Data To Ods\Users Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data To Ods\Users File.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data To Ods.Paths[Flat File Source Output3]"
+              endId="Package\Data To Ods\MCC Codes Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data To Ods\MCC Codes File.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data To Ods"
+          TopLeft="212.5,15.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data To Ods">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Data To Ods\Transactions File"
+          TopLeft="85.5,23.5" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Data To Ods\Transactions Destination"
+          TopLeft="91.5,103.5" />
+        <EdgeLayout
+          Id="Package\Data To Ods.Paths[Flat File Source Output]"
+          TopLeft="164.5,65.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.5,38"
+              Start="0,0"
+              End="24.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="20.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.5,19"
+                    Point2="24.5,19"
+                    Point3="24.5,23" />
+                  <mssgle:LineSegment
+                    End="24.5,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Data To Ods\Cards File"
+          TopLeft="298.5,23.5" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Data To Ods\Cards Destination"
+          TopLeft="310.5,101.5" />
+        <EdgeLayout
+          Id="Package\Data To Ods.Paths[Flat File Source Output1]"
+          TopLeft="361,65.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30.5,36"
+              Start="0,0"
+              End="30.5,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
+                  <mssgle:LineSegment
+                    End="26.5,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.5,18"
+                    Point2="30.5,18"
+                    Point3="30.5,22" />
+                  <mssgle:LineSegment
+                    End="30.5,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Data To Ods\Users File"
+          TopLeft="478.5,23.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Data To Ods\Users Destination"
+          TopLeft="491.5,100.5" />
+        <EdgeLayout
+          Id="Package\Data To Ods.Paths[Flat File Source Output2]"
+          TopLeft="540.5,65.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.5,35"
+              Start="0,0"
+              End="31.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="27.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.5,17.5"
+                    Point2="31.5,17.5"
+                    Point3="31.5,21.5" />
+                  <mssgle:LineSegment
+                    End="31.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data To Ods\MCC Codes File"
+          TopLeft="148.5,166.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Data To Ods\MCC Codes Destination"
+          TopLeft="403.5,205.5" />
+        <EdgeLayout
+          Id="Package\Data To Ods.Paths[Flat File Source Output3]"
+          TopLeft="299.5,187.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104,39"
+              Start="0,0"
+              End="96.5,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="48,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48,0"
+                    Point2="52,0"
+                    Point3="52,4" />
+                  <mssgle:LineSegment
+                    End="52,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52,35"
+                    Point2="52,39"
+                    Point3="56,39" />
+                  <mssgle:LineSegment
+                    End="96.5,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data To Ods\Transactions Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data To Ods\Cards Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data To Ods\Users Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data To Ods\MCC Codes Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
