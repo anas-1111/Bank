@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="STG_To_DWH"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{4ED5682A-5236-4841-BF61-84E6F3E83DEE}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{975F95CB-EDF5-47FC-AD7D-54718602B7C3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1877,83 +1877,6 @@ where [refTable].[ID] = ?</property>
           version="1">
           <components>
             <component
-              refId="Package\Fill DimState\Edit Length"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Edit Length"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Fill DimState\Edit Length.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Fill DimState\Edit Length.Inputs[Data Conversion Input].Columns[merchant_state]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="merchant_state"
-                      lineageId="Package\Fill DimState\Get State.Outputs[OLE DB Source Output].Columns[merchant_state]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Fill DimState\Edit Length.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Output].Columns[merchant_state]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="20"
-                      lineageId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Output].Columns[merchant_state]"
-                      name="merchant_state"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Fill DimState\Get State.Outputs[OLE DB Source Output].Columns[merchant_state]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Fill DimState\Edit Length.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Fill DimState\Fill DimState"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -2028,10 +1951,10 @@ where [refTable].[ID] = ?</property>
                     <inputColumn
                       refId="Package\Fill DimState\Fill DimState.Inputs[OLE DB Destination Input].Columns[merchant_state]"
                       cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedLength="50"
                       cachedName="merchant_state"
                       externalMetadataColumnId="Package\Fill DimState\Fill DimState.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
-                      lineageId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Output].Columns[merchant_state]" />
+                      lineageId="Package\Fill DimState\Get State.Outputs[OLE DB Source Output].Columns[merchant_state]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2042,7 +1965,7 @@ where [refTable].[ID] = ?</property>
                     <externalMetadataColumn
                       refId="Package\Fill DimState\Fill DimState.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
                       dataType="wstr"
-                      length="20"
+                      length="50"
                       name="StateCode" />
                   </externalMetadataColumns>
                 </input>
@@ -2184,13 +2107,8 @@ where [refTable].[ID] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Fill DimState.Paths[Data Conversion Output]"
-              endId="Package\Fill DimState\Fill DimState.Inputs[OLE DB Destination Input]"
-              name="Data Conversion Output"
-              startId="Package\Fill DimState\Edit Length.Outputs[Data Conversion Output]" />
-            <path
               refId="Package\Fill DimState.Paths[OLE DB Source Output]"
-              endId="Package\Fill DimState\Edit Length.Inputs[Data Conversion Input]"
+              endId="Package\Fill DimState\Fill DimState.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Fill DimState\Get State.Outputs[OLE DB Source Output]" />
           </paths>
@@ -3417,7 +3335,7 @@ where [refTable].[ID] = ?</property>
     design-time-name="Package\Fill DimState">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="123,42"
           Id="Package\Fill DimState\Get State"
@@ -3425,71 +3343,33 @@ where [refTable].[ID] = ?</property>
         <NodeLayout
           Size="138,42"
           Id="Package\Fill DimState\Fill DimState"
-          TopLeft="361,183" />
-        <NodeLayout
-          Size="132,42"
-          Id="Package\Fill DimState\Edit Length"
-          TopLeft="254.5,112.5" />
+          TopLeft="274,144" />
         <EdgeLayout
           Id="Package\Fill DimState.Paths[OLE DB Source Output]"
           TopLeft="211.5,87">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="109,25.5"
+              EndConnector="131.5,57"
               Start="0,0"
-              End="109,18">
+              End="131.5,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.75" />
+                    End="0,24.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.75"
-                    Point2="0,12.75"
-                    Point3="4,12.75" />
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
                   <mssgle:LineSegment
-                    End="105,12.75" />
+                    End="127.5,28.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="105,12.75"
-                    Point2="109,12.75"
-                    Point3="109,16.75" />
+                    Point1="127.5,28.5"
+                    Point2="131.5,28.5"
+                    Point3="131.5,32.5" />
                   <mssgle:LineSegment
-                    End="109,18" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Fill DimState.Paths[Data Conversion Output]"
-          TopLeft="320.5,154.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="109.5,28.5"
-              Start="0,0"
-              End="109.5,21">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.25"
-                    Point2="0,14.25"
-                    Point3="4,14.25" />
-                  <mssgle:LineSegment
-                    End="105.5,14.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="105.5,14.25"
-                    Point2="109.5,14.25"
-                    Point3="109.5,18.25" />
-                  <mssgle:LineSegment
-                    End="109.5,21" />
+                    End="131.5,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
