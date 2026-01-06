@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="STG_To_DWH"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{5F6F97A2-A5A1-4226-BDF0-DFF1521D7D98}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{02F7CBD5-E805-40D2-BD6A-B09E43E8DEBB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,13 +32,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\Data Flow Task 1"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{723B903E-9899-408C-A99A-5FD73F20BD5F}"
+      DTS:DTSID="{73AED939-A240-44E3-85BB-13F7B73177B8}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="Data Flow Task 1"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -46,11 +46,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Fill DimErrors"
+              refId="Package\Data Flow Task 1\Fill DimCity"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Fill DimErrors"
+              name="Fill DimCity"
               usesDispositions="true"
               version="4">
               <properties>
@@ -61,7 +61,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[DWH].[DimErrors]</property>
+                  name="OpenRowset">[DWH].[DimCity]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -103,7 +103,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Fill DimErrors.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task 1\Fill DimCity.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="The OLE DB runtime connection used to access the database."
@@ -111,52 +111,52 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Fill DimErrors.Inputs[OLE DB Destination Input]"
+                  refId="Package\Data Flow Task 1\Fill DimCity.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimErrors.Inputs[OLE DB Destination Input].Columns[errors]"
+                      refId="Package\Data Flow Task 1\Fill DimCity.Inputs[OLE DB Destination Input].Columns[merchant_city]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="errors"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimErrors.Inputs[OLE DB Destination Input].ExternalColumns[Error]"
-                      lineageId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Output].Columns[errors]" />
+                      cachedName="merchant_city"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Fill DimCity.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Output].Columns[merchant_city]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimErrors.Inputs[OLE DB Destination Input].ExternalColumns[ErrorsKey]"
+                      refId="Package\Data Flow Task 1\Fill DimCity.Inputs[OLE DB Destination Input].ExternalColumns[CityKey]"
                       dataType="i4"
-                      name="ErrorsKey" />
+                      name="CityKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimErrors.Inputs[OLE DB Destination Input].ExternalColumns[Error]"
+                      refId="Package\Data Flow Task 1\Fill DimCity.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       dataType="wstr"
                       length="100"
-                      name="Error" />
+                      name="City" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Fill DimErrors.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Data Flow Task 1\Fill DimCity.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Fill DimErrors.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Data Flow Task 1\Fill DimCity.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task 1\Fill DimCity.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task 1\Fill DimCity.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task 1\Fill DimCity.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task 1\Fill DimCity.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -165,11 +165,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Get Errors"
+              refId="Package\Data Flow Task 1\Get City"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="Get Errors"
+              name="Get City"
               usesDispositions="true"
               version="7">
               <properties>
@@ -189,7 +189,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct errors from STG.Transactions</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct merchant_city from STG.Transactions</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -214,7 +214,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Get Errors.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task 1\Get City.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="The OLE DB runtime connection used to access the database."
@@ -222,50 +222,50 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Output]"
+                  refId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Output].Columns[errors]"
+                      refId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Output].Columns[merchant_city]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Output].ExternalColumns[errors]"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Output].ExternalColumns[merchant_city]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Output].Columns[errors]"
-                      name="errors"
+                      lineageId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Output].Columns[merchant_city]"
+                      name="merchant_city"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Output].ExternalColumns[errors]"
+                      refId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Output].ExternalColumns[merchant_city]"
                       dataType="wstr"
                       length="50"
-                      name="errors" />
+                      name="merchant_city" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Error Output].Columns[errors]"
+                      refId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Error Output].Columns[merchant_city]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Error Output].Columns[errors]"
-                      name="errors" />
+                      lineageId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Error Output].Columns[merchant_city]"
+                      name="merchant_city" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -276,10 +276,10 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Fill DimErrors.Inputs[OLE DB Destination Input]"
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Fill DimCity.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Get Errors.Outputs[OLE DB Source Output]" />
+              startId="Package\Data Flow Task 1\Get City.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1610,6 +1610,259 @@ where [refTable].[ID] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Fill DimErrors"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{723B903E-9899-408C-A99A-5FD73F20BD5F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fill DimErrors"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Fill DimErrors\Fill DimErrors"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fill DimErrors"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[DimErrors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fill DimErrors\Fill DimErrors.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fill DimErrors\Fill DimErrors.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fill DimErrors\Fill DimErrors.Inputs[OLE DB Destination Input].Columns[errors]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="errors"
+                      externalMetadataColumnId="Package\Fill DimErrors\Fill DimErrors.Inputs[OLE DB Destination Input].ExternalColumns[Error]"
+                      lineageId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Output].Columns[errors]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fill DimErrors\Fill DimErrors.Inputs[OLE DB Destination Input].ExternalColumns[ErrorsKey]"
+                      dataType="i4"
+                      name="ErrorsKey" />
+                    <externalMetadataColumn
+                      refId="Package\Fill DimErrors\Fill DimErrors.Inputs[OLE DB Destination Input].ExternalColumns[Error]"
+                      dataType="wstr"
+                      length="100"
+                      name="Error" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fill DimErrors\Fill DimErrors.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Fill DimErrors\Fill DimErrors.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fill DimErrors\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fill DimErrors\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fill DimErrors\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fill DimErrors\Fill DimErrors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fill DimErrors\Get Errors"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Errors"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct errors from STG.Transactions</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fill DimErrors\Get Errors.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Output].Columns[errors]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Output].ExternalColumns[errors]"
+                      length="50"
+                      lineageId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Output].Columns[errors]"
+                      name="errors"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Output].ExternalColumns[errors]"
+                      dataType="wstr"
+                      length="50"
+                      name="errors" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Error Output].Columns[errors]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Error Output].Columns[errors]"
+                      name="errors" />
+                    <outputColumn
+                      refId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Fill DimErrors.Paths[OLE DB Source Output]"
+              endId="Package\Fill DimErrors\Fill DimErrors.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Fill DimErrors\Get Errors.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Fill DimUsers"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -2243,11 +2496,11 @@ where [refTable].[ID] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="140,42"
           Id="Package\Fill DimUsers"
-          TopLeft="63.5,28.5" />
+          TopLeft="64.5,31.5" />
         <NodeLayout
           Size="140,42"
           Id="Package\Fill DimCards"
@@ -2255,11 +2508,15 @@ where [refTable].[ID] = ?</property>
         <NodeLayout
           Size="135,42"
           Id="Package\Fill DimChip"
-          TopLeft="367.5,29.5" />
+          TopLeft="365.5,29.5" />
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task"
-          TopLeft="78.5,95.5" />
+          Size="142,42"
+          Id="Package\Fill DimErrors"
+          TopLeft="514.5,29.5" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="75.5,111.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2676,20 +2933,20 @@ where [refTable].[ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\Fill DimErrors">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="127,42"
-          Id="Package\Data Flow Task\Get Errors"
+          Id="Package\Fill DimErrors\Get Errors"
           TopLeft="203,55" />
         <NodeLayout
           Size="142,42"
-          Id="Package\Data Flow Task\Fill DimErrors"
+          Id="Package\Fill DimErrors\Fill DimErrors"
           TopLeft="406,154" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          Id="Package\Fill DimErrors.Paths[OLE DB Source Output]"
           TopLeft="266.5,97">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -2726,7 +2983,7 @@ where [refTable].[ID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Get Errors">
+    design-time-name="Package\Fill DimErrors\Get Errors">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2734,7 +2991,78 @@ where [refTable].[ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Fill DimErrors">
+    design-time-name="Package\Fill DimErrors\Fill DimErrors">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Data Flow Task 1\Get City"
+          TopLeft="201,63" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Data Flow Task 1\Fill DimCity"
+          TopLeft="374,162" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="259,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="181,57"
+              Start="0,0"
+              End="181,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="177,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="177,28.5"
+                    Point2="181,28.5"
+                    Point3="181,32.5" />
+                  <mssgle:LineSegment
+                    End="181,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Get City">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Fill DimCity">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
