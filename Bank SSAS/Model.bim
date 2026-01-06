@@ -1,0 +1,877 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer localhost Bank",
+        "connectionString": "Provider=SQLOLEDB;Data Source=DESKTOP-LD1MQL2;Initial Catalog=Bank;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimCards",
+        "columns": [
+          {
+            "name": "CardKey",
+            "dataType": "int64",
+            "sourceColumn": "CardKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CardID",
+            "dataType": "int64",
+            "sourceColumn": "CardID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "UserKey",
+            "dataType": "int64",
+            "sourceColumn": "UserKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CardBrand",
+            "dataType": "string",
+            "sourceColumn": "CardBrand",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CardType",
+            "dataType": "string",
+            "sourceColumn": "CardType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ExpireDateKey",
+            "dataType": "int64",
+            "sourceColumn": "ExpireDateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HasChip",
+            "dataType": "string",
+            "sourceColumn": "HasChip",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "NumOfCards",
+            "dataType": "int64",
+            "sourceColumn": "NumOfCards",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CreditLimit",
+            "dataType": "int64",
+            "sourceColumn": "CreditLimit",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AccountOpenDateKey",
+            "dataType": "int64",
+            "sourceColumn": "AccountOpenDateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "LastPinChangeYear",
+            "dataType": "int64",
+            "sourceColumn": "LastPinChangeYear",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCards",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimCards].*   FROM [DWH].[DimCards] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimCards].*   FROM [DWH].[DimCards] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCards"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimChip",
+        "columns": [
+          {
+            "name": "ChipKey",
+            "dataType": "int64",
+            "sourceColumn": "ChipKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Chip",
+            "dataType": "string",
+            "sourceColumn": "Chip",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimChip",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimChip].*   FROM [DWH].[DimChip] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimChip].*   FROM [DWH].[DimChip] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimChip"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimCity",
+        "columns": [
+          {
+            "name": "CityKey",
+            "dataType": "int64",
+            "sourceColumn": "CityKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCity",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimCity].*   FROM [DWH].[DimCity] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimCity].*   FROM [DWH].[DimCity] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCity"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Date",
+            "dataType": "string",
+            "sourceColumn": "Date",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Day",
+            "dataType": "int64",
+            "sourceColumn": "Day",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DayName",
+            "dataType": "string",
+            "sourceColumn": "DayName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Hour",
+            "dataType": "int64",
+            "sourceColumn": "Hour",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Min",
+            "dataType": "int64",
+            "sourceColumn": "Min",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimDate].*   FROM [DWH].[DimDate] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimDate].*   FROM [DWH].[DimDate] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDate"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimErrors",
+        "columns": [
+          {
+            "name": "ErrorsKey",
+            "dataType": "int64",
+            "sourceColumn": "ErrorsKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Error",
+            "dataType": "string",
+            "sourceColumn": "Error",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimErrors",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimErrors].*   FROM [DWH].[DimErrors] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimErrors].*   FROM [DWH].[DimErrors] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimErrors"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimMCC",
+        "columns": [
+          {
+            "name": "MCCKey",
+            "dataType": "int64",
+            "sourceColumn": "MCCKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MCC_Code",
+            "dataType": "int64",
+            "sourceColumn": "MCC_Code",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MCC",
+            "dataType": "string",
+            "sourceColumn": "MCC",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimMCC",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimMCC].*   FROM [DWH].[DimMCC] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimMCC].*   FROM [DWH].[DimMCC] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimMCC"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimState",
+        "columns": [
+          {
+            "name": "StateKey",
+            "dataType": "int64",
+            "sourceColumn": "StateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "StateCode",
+            "dataType": "string",
+            "sourceColumn": "StateCode",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimState",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimState].*   FROM [DWH].[DimState] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimState].*   FROM [DWH].[DimState] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimState"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimStreet",
+        "columns": [
+          {
+            "name": "StreetKey",
+            "dataType": "int64",
+            "sourceColumn": "StreetKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "StreetName",
+            "dataType": "string",
+            "sourceColumn": "StreetName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimStreet",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimStreet].*   FROM [DWH].[DimStreet] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimStreet].*   FROM [DWH].[DimStreet] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimStreet"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimUsers",
+        "columns": [
+          {
+            "name": "UserKey",
+            "dataType": "int64",
+            "sourceColumn": "UserKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Age",
+            "dataType": "int64",
+            "sourceColumn": "Age",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "RetirementAge",
+            "dataType": "int64",
+            "sourceColumn": "RetirementAge",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "YearOfBirth",
+            "dataType": "int64",
+            "sourceColumn": "YearOfBirth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthOfBirth",
+            "dataType": "int64",
+            "sourceColumn": "MonthOfBirth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "StreetNum",
+            "dataType": "int64",
+            "sourceColumn": "StreetNum",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "StreetKey",
+            "dataType": "int64",
+            "sourceColumn": "StreetKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Latitude",
+            "dataType": "double",
+            "sourceColumn": "Latitude",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Longitude",
+            "dataType": "double",
+            "sourceColumn": "Longitude",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "PerCapitaIncome",
+            "dataType": "int64",
+            "sourceColumn": "PerCapitaIncome",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "YearlyIncome",
+            "dataType": "int64",
+            "sourceColumn": "YearlyIncome",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TotalDebt",
+            "dataType": "int64",
+            "sourceColumn": "TotalDebt",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CreditScore",
+            "dataType": "int64",
+            "sourceColumn": "CreditScore",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "NumOfCreditCards",
+            "dataType": "int64",
+            "sourceColumn": "NumOfCreditCards",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimUsers",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimUsers].*   FROM [DWH].[DimUsers] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimUsers].*   FROM [DWH].[DimUsers] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimUsers"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "FactTransactions",
+        "columns": [
+          {
+            "name": "TransactionKey",
+            "dataType": "int64",
+            "sourceColumn": "TransactionKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "UserKey",
+            "dataType": "int64",
+            "sourceColumn": "UserKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CardKey",
+            "dataType": "int64",
+            "sourceColumn": "CardKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Amount",
+            "dataType": "double",
+            "sourceColumn": "Amount",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "UseChipKey",
+            "dataType": "int64",
+            "sourceColumn": "UseChipKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MerchantID",
+            "dataType": "int64",
+            "sourceColumn": "MerchantID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CityKey",
+            "dataType": "int64",
+            "sourceColumn": "CityKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "StateKey",
+            "dataType": "int64",
+            "sourceColumn": "StateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ZIP",
+            "dataType": "int64",
+            "sourceColumn": "ZIP",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MCCKey",
+            "dataType": "int64",
+            "sourceColumn": "MCCKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ErrorsKey",
+            "dataType": "int64",
+            "sourceColumn": "ErrorsKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Target",
+            "dataType": "int64",
+            "sourceColumn": "Target",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactTransactions",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[FactTransactions].*   FROM [DWH].[FactTransactions] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Online Transactions Count",
+            "expression": " CALCULATE( COUNTROWS(FactTransactions) )"
+          },
+          {
+            "name": "Online Total Amount",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    SUM(FactTransactions[Amount]))"
+            ]
+          },
+          {
+            "name": "Online Average Amount",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Online Total Amount],",
+              "    [Online Transactions Count]",
+              ")"
+            ]
+          },
+          {
+            "name": "Online Failed Transactions",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(FactTransactions),FactTransactions[ErrorsKey]<> 10)"
+            ]
+          },
+          {
+            "name": "Fruad Transactions",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(FactTransactions),FactTransactions[Target]= 1",
+              ")"
+            ]
+          },
+          {
+            "name": "Online Successful Transactions",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(FactTransactions),FactTransactions[ErrorsKey]= 10)"
+            ]
+          },
+          {
+            "name": "Online Success Rate",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Online Successful Transactions],",
+              "    [Online Transactions Count]",
+              ")"
+            ]
+          },
+          {
+            "name": "Online Failure Rate",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Online Failed Transactions],",
+              "    [Online Transactions Count]",
+              ")"
+            ]
+          },
+          {
+            "name": "Online Active Users",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    DISTINCTCOUNT(FactTransactions[UserKey]))"
+            ]
+          },
+          {
+            "name": "Online Spend per User",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Online Total Amount],",
+              "    [Online Active Users]",
+              ")"
+            ]
+          },
+          {
+            "name": "Online MCC Amount",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    SUM(FactTransactions[Amount]))"
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[FactTransactions].*   FROM [DWH].[FactTransactions] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactTransactions"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "7a349d7e-4c50-433b-b38d-34bd9bd20130",
+        "fromTable": "FactTransactions",
+        "fromColumn": "UserKey",
+        "toTable": "DimUsers",
+        "toColumn": "UserKey"
+      },
+      {
+        "name": "e6349f02-4640-493f-a129-c34f16855eef",
+        "fromTable": "DimUsers",
+        "fromColumn": "StreetKey",
+        "toTable": "DimStreet",
+        "toColumn": "StreetKey"
+      },
+      {
+        "name": "03092a0e-992a-4fd1-9939-59f55241284b",
+        "fromTable": "FactTransactions",
+        "fromColumn": "StateKey",
+        "toTable": "DimState",
+        "toColumn": "StateKey"
+      },
+      {
+        "name": "7a8c7170-4cd6-4ed6-bd12-6b2d7e08d55f",
+        "fromTable": "FactTransactions",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "1a7803e7-9865-45b1-add0-4e6d28633e4c",
+        "fromTable": "DimCards",
+        "fromColumn": "ExpireDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "6a7d5de8-ef15-493b-893d-e5571839b8cd",
+        "fromTable": "DimCards",
+        "fromColumn": "AccountOpenDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "346280bc-1931-4e26-b1f8-d91e41f02cab",
+        "fromTable": "FactTransactions",
+        "fromColumn": "CardKey",
+        "toTable": "DimCards",
+        "toColumn": "CardKey",
+        "isActive": false
+      },
+      {
+        "name": "0da32ba2-a61b-4bd2-86eb-095ef40de158",
+        "fromTable": "FactTransactions",
+        "fromColumn": "ErrorsKey",
+        "toTable": "DimErrors",
+        "toColumn": "ErrorsKey"
+      },
+      {
+        "name": "63b9c882-7a62-4374-9e19-1cdffc30fa19",
+        "fromTable": "FactTransactions",
+        "fromColumn": "ZIP",
+        "toTable": "DimMCC",
+        "toColumn": "MCCKey"
+      },
+      {
+        "name": "93da1fa4-bffb-473c-b687-7970711d1918",
+        "fromTable": "FactTransactions",
+        "fromColumn": "CityKey",
+        "toTable": "DimCity",
+        "toColumn": "CityKey"
+      },
+      {
+        "name": "e0f0199d-09de-43b9-b852-b9ce5cfb5bab",
+        "fromTable": "FactTransactions",
+        "fromColumn": "UseChipKey",
+        "toTable": "DimChip",
+        "toColumn": "ChipKey"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
