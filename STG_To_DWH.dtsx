@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="STG_To_DWH"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{36EABB9C-0C4E-4463-A56E-4C5CB1E188F5}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{4422E4AF-A8CC-4A4D-9953-E123C289698B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -35,7 +35,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{01EC7A7E-4CF7-4D1A-98A8-EDBFB040083B}"
+      DTS:DTSID="{86433544-F12A-4B54-9DB2-CBA6B55BC2C0}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -46,11 +46,264 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\AccountDate"
+              refId="Package\Data Flow Task\Fill DimChip"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fill DimChip"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWH].[DimChip]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Fill DimChip.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Fill DimChip.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fill DimChip.Inputs[OLE DB Destination Input].Columns[use_chip]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="use_chip"
+                      externalMetadataColumnId="Package\Data Flow Task\Fill DimChip.Inputs[OLE DB Destination Input].ExternalColumns[Chip]"
+                      lineageId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Output].Columns[use_chip]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DimChip.Inputs[OLE DB Destination Input].ExternalColumns[ChipKey]"
+                      dataType="i4"
+                      name="ChipKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Fill DimChip.Inputs[OLE DB Destination Input].ExternalColumns[Chip]"
+                      dataType="wstr"
+                      length="50"
+                      name="Chip" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Fill DimChip.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Fill DimChip.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill DimChip.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill DimChip.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fill DimChip.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Fill DimChip.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Get Chip"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Chip"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct use_chip from STG.Transactions</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Get Chip.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Output].Columns[use_chip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Output].ExternalColumns[use_chip]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Output].Columns[use_chip]"
+                      name="use_chip"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Output].ExternalColumns[use_chip]"
+                      dataType="wstr"
+                      length="50"
+                      name="use_chip" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Error Output].Columns[use_chip]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Error Output].Columns[use_chip]"
+                      name="use_chip" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Fill DimChip.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Get Chip.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Fill DimCards"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{01EC7A7E-4CF7-4D1A-98A8-EDBFB040083B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fill DimCards"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Fill DimCards\AccountDateKey Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="AccountDate"
+              name="AccountDateKey Lookup"
               usesDispositions="true"
               version="6">
               <properties>
@@ -102,7 +355,7 @@ where [refTable].[Date] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]};</property>
+                  name="ParameterMap">#{Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -114,7 +367,7 @@ where [refTable].[Date] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\AccountDate.Connections[OleDbConnection]"
+                  refId="Package\Fill DimCards\AccountDateKey Lookup.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="Connection manager used to access lookup data."
@@ -122,15 +375,15 @@ where [refTable].[Date] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\AccountDate.Inputs[Lookup Input]"
+                  refId="Package\Fill DimCards\AccountDateKey Lookup.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\AccountDate.Inputs[Lookup Input].Columns[acct_open_date]"
+                      refId="Package\Fill DimCards\AccountDateKey Lookup.Inputs[Lookup Input].Columns[acct_open_date]"
                       cachedDataType="wstr"
                       cachedLength="27"
                       cachedName="acct_open_date"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]">
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -148,18 +401,18 @@ where [refTable].[Date] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\AccountDate.Outputs[Lookup Match Output]"
+                  refId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\AccountDate.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\AccountDateKey Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\AccountDate.Outputs[Lookup Match Output].Columns[DateKey]"
+                      refId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Match Output].Columns[DateKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\AccountDate.Outputs[Lookup Match Output].Columns[DateKey]"
+                      lineageId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Match Output].Columns[DateKey]"
                       name="DateKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -173,30 +426,30 @@ where [refTable].[Date] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\AccountDate.Outputs[Lookup No Match Output]"
+                  refId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\AccountDate.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\AccountDateKey Lookup.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\AccountDate.Outputs[Lookup Error Output]"
+                  refId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\AccountDate.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\AccountDateKey Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\AccountDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\AccountDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\AccountDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\AccountDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -205,7 +458,7 @@ where [refTable].[Date] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Cards STG"
+              refId="Package\Fill DimCards\Cards STG"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -254,7 +507,7 @@ where [refTable].[Date] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Cards STG.Connections[OleDbConnection]"
+                  refId="Package\Fill DimCards\Cards STG.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="The OLE DB runtime connection used to access the database."
@@ -262,284 +515,284 @@ where [refTable].[Date] = ?</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output]"
+                  refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[id]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[id]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[id]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[id]"
                       name="id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]"
                       name="client_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_brand]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_brand]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_brand]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_brand]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_brand]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_brand]"
                       name="card_brand"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_type]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_type]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_type]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_type]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_type]"
                       name="card_type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_number]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_number]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_number]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_number]"
                       length="20"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_number]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_number]"
                       name="card_number"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[expires]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[expires]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[expires]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[expires]"
                       length="27"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[expires]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[expires]"
                       name="expires"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[cvv]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[cvv]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[cvv]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[cvv]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[cvv]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[cvv]"
                       name="cvv"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[has_chip]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[has_chip]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[has_chip]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[has_chip]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[has_chip]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[has_chip]"
                       name="has_chip"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[num_cards_issued]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[num_cards_issued]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[num_cards_issued]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[num_cards_issued]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[num_cards_issued]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[num_cards_issued]"
                       name="num_cards_issued"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[credit_limit]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[credit_limit]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[credit_limit]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[credit_limit]"
                       name="credit_limit"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[acct_open_date]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[acct_open_date]"
                       length="27"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[acct_open_date]"
                       name="acct_open_date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[year_pin_last_changed]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[year_pin_last_changed]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]"
                       name="year_pin_last_changed"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_on_dark_web]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_on_dark_web]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_on_dark_web]"
+                      externalMetadataColumnId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_on_dark_web]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_on_dark_web]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_on_dark_web]"
                       name="card_on_dark_web"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[id]"
                       dataType="i4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[client_id]"
                       dataType="i4"
                       name="client_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_brand]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_brand]"
                       dataType="wstr"
                       length="50"
                       name="card_brand" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_type]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_type]"
                       dataType="wstr"
                       length="50"
                       name="card_type" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_number]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_number]"
                       dataType="wstr"
                       length="20"
                       name="card_number" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[expires]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[expires]"
                       dataType="wstr"
                       length="27"
                       name="expires" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[cvv]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[cvv]"
                       dataType="i4"
                       name="cvv" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[has_chip]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[has_chip]"
                       dataType="wstr"
                       length="50"
                       name="has_chip" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[num_cards_issued]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[num_cards_issued]"
                       dataType="i4"
                       name="num_cards_issued" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[credit_limit]"
                       dataType="i4"
                       name="credit_limit" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[acct_open_date]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[acct_open_date]"
                       dataType="wstr"
                       length="27"
                       name="acct_open_date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[year_pin_last_changed]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[year_pin_last_changed]"
                       dataType="i4"
                       name="year_pin_last_changed" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_on_dark_web]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].ExternalColumns[card_on_dark_web]"
                       dataType="wstr"
                       length="50"
                       name="card_on_dark_web" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[id]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[id]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[id]"
                       name="id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[client_id]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[client_id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[client_id]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[client_id]"
                       name="client_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_brand]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_brand]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_brand]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_brand]"
                       name="card_brand" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_type]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_type]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_type]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_type]"
                       name="card_type" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_number]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_number]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_number]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_number]"
                       name="card_number" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[expires]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[expires]"
                       dataType="wstr"
                       length="27"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[expires]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[expires]"
                       name="expires" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[cvv]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[cvv]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[cvv]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[cvv]"
                       name="cvv" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[has_chip]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[has_chip]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[has_chip]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[has_chip]"
                       name="has_chip" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[num_cards_issued]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[num_cards_issued]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[num_cards_issued]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[num_cards_issued]"
                       name="num_cards_issued" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[credit_limit]"
                       name="credit_limit" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[acct_open_date]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[acct_open_date]"
                       dataType="wstr"
                       length="27"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[acct_open_date]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[acct_open_date]"
                       name="acct_open_date" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[year_pin_last_changed]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[year_pin_last_changed]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[year_pin_last_changed]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[year_pin_last_changed]"
                       name="year_pin_last_changed" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_on_dark_web]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_on_dark_web]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_on_dark_web]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[card_on_dark_web]"
                       name="card_on_dark_web" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -548,11 +801,11 @@ where [refTable].[Date] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Expires"
+              refId="Package\Fill DimCards\ExpiresDateKey Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Expires"
+              name="ExpiresDateKey Lookup"
               usesDispositions="true"
               version="6">
               <properties>
@@ -604,7 +857,7 @@ where [refTable].[Date] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[expires]};</property>
+                  name="ParameterMap">#{Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[expires]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -616,7 +869,7 @@ where [refTable].[Date] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Expires.Connections[OleDbConnection]"
+                  refId="Package\Fill DimCards\ExpiresDateKey Lookup.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="Connection manager used to access lookup data."
@@ -624,15 +877,15 @@ where [refTable].[Date] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Expires.Inputs[Lookup Input]"
+                  refId="Package\Fill DimCards\ExpiresDateKey Lookup.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Expires.Inputs[Lookup Input].Columns[expires]"
+                      refId="Package\Fill DimCards\ExpiresDateKey Lookup.Inputs[Lookup Input].Columns[expires]"
                       cachedDataType="wstr"
                       cachedLength="27"
                       cachedName="expires"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[expires]">
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[expires]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -650,18 +903,18 @@ where [refTable].[Date] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Expires.Outputs[Lookup Match Output]"
+                  refId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\Expires.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\ExpiresDateKey Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Expires.Outputs[Lookup Match Output].Columns[DateKey]"
+                      refId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Match Output].Columns[DateKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Expires.Outputs[Lookup Match Output].Columns[DateKey]"
+                      lineageId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Match Output].Columns[DateKey]"
                       name="DateKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -675,30 +928,30 @@ where [refTable].[Date] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Expires.Outputs[Lookup No Match Output]"
+                  refId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\Expires.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\ExpiresDateKey Lookup.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Expires.Outputs[Lookup Error Output]"
+                  refId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\Expires.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\ExpiresDateKey Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Expires.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Expires.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Expires.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Expires.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -707,7 +960,7 @@ where [refTable].[Date] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Fill DimCards"
+              refId="Package\Fill DimCards\Fill DimCards"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -764,7 +1017,7 @@ where [refTable].[Date] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Fill DimCards.Connections[OleDbConnection]"
+                  refId="Package\Fill DimCards\Fill DimCards.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="The OLE DB runtime connection used to access the database."
@@ -772,122 +1025,123 @@ where [refTable].[Date] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input]"
+                  refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[UserKey]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[UserKey]"
                       cachedDataType="i4"
                       cachedName="UserKey"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[UserKey]"
-                      lineageId="Package\Data Flow Task\User Lookup.Outputs[Lookup Match Output].Columns[UserKey]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[UserKey]"
+                      lineageId="Package\Fill DimCards\User Lookup.Outputs[Lookup Match Output].Columns[UserKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[id]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardID]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[id]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardID]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[id]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[card_brand]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[card_brand]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="card_brand"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardBrand]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_brand]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardBrand]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_brand]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[card_type]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[card_type]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="card_type"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[card_type]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[card_type]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[has_chip]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[has_chip]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="has_chip"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[HasChip]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[has_chip]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[HasChip]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[has_chip]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[num_cards_issued]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[num_cards_issued]"
                       cachedDataType="i4"
                       cachedName="num_cards_issued"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[NumOfCards]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[num_cards_issued]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[NumOfCards]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[num_cards_issued]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[credit_limit]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[credit_limit]"
                       cachedDataType="i4"
                       cachedName="credit_limit"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CreditLimit]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[credit_limit]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CreditLimit]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[credit_limit]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[year_pin_last_changed]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[year_pin_last_changed]"
                       cachedDataType="i4"
                       cachedName="year_pin_last_changed"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[LastPinChangeYear]"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[LastPinChangeYear]"
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[year_pin_last_changed]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[DateKey]"
                       cachedDataType="i4"
                       cachedName="DateKey"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[ExpireDateKey]"
-                      lineageId="Package\Data Flow Task\Expires.Outputs[Lookup Match Output].Columns[DateKey]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[ExpireDateKey]"
+                      lineageId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Match Output].Columns[DateKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].Columns[DateKey1]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].Columns[DateKey1]"
                       cachedDataType="i4"
                       cachedName="DateKey"
-                      externalMetadataColumnId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[AccountOpenDateKey]"
-                      lineageId="Package\Data Flow Task\AccountDate.Outputs[Lookup Match Output].Columns[DateKey]" />
+                      externalMetadataColumnId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[AccountOpenDateKey]"
+                      lineageId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Match Output].Columns[DateKey]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardKey]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardKey]"
                       dataType="i4"
                       name="CardKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardID]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardID]"
                       dataType="i4"
                       name="CardID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[UserKey]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[UserKey]"
                       dataType="i4"
                       name="UserKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardBrand]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardBrand]"
                       dataType="wstr"
                       length="50"
                       name="CardBrand" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CardType]"
                       dataType="wstr"
                       length="50"
                       name="CardType" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[ExpireDateKey]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[ExpireDateKey]"
                       dataType="i4"
                       name="ExpireDateKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[HasChip]"
-                      dataType="i4"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[HasChip]"
+                      dataType="wstr"
+                      length="50"
                       name="HasChip" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[NumOfCards]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[NumOfCards]"
                       dataType="i4"
                       name="NumOfCards" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CreditLimit]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[CreditLimit]"
                       dataType="i4"
                       name="CreditLimit" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[AccountOpenDateKey]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[AccountOpenDateKey]"
                       dataType="i4"
                       name="AccountOpenDateKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[LastPinChangeYear]"
+                      refId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input].ExternalColumns[LastPinChangeYear]"
                       dataType="i4"
                       name="LastPinChangeYear" />
                   </externalMetadataColumns>
@@ -895,22 +1149,22 @@ where [refTable].[Date] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Fill DimCards.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Fill DimCards\Fill DimCards.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Fill DimCards\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Fill DimCards\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Fill DimCards\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Fill DimCards\Fill DimCards.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -919,7 +1173,7 @@ where [refTable].[Date] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\User Lookup"
+              refId="Package\Fill DimCards\User Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -975,7 +1229,7 @@ where [refTable].[ID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]};</property>
+                  name="ParameterMap">#{Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -987,7 +1241,7 @@ where [refTable].[ID] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\User Lookup.Connections[OleDbConnection]"
+                  refId="Package\Fill DimCards\User Lookup.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Bank]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Bank]"
                   description="Connection manager used to access lookup data."
@@ -995,14 +1249,14 @@ where [refTable].[ID] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\User Lookup.Inputs[Lookup Input]"
+                  refId="Package\Fill DimCards\User Lookup.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\User Lookup.Inputs[Lookup Input].Columns[client_id]"
+                      refId="Package\Fill DimCards\User Lookup.Inputs[Lookup Input].Columns[client_id]"
                       cachedDataType="i4"
                       cachedName="client_id"
-                      lineageId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]">
+                      lineageId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output].Columns[client_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1020,18 +1274,18 @@ where [refTable].[ID] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\User Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Fill DimCards\User Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\User Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\User Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\User Lookup.Outputs[Lookup Match Output].Columns[UserKey]"
+                      refId="Package\Fill DimCards\User Lookup.Outputs[Lookup Match Output].Columns[UserKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\User Lookup.Outputs[Lookup Match Output].Columns[UserKey]"
+                      lineageId="Package\Fill DimCards\User Lookup.Outputs[Lookup Match Output].Columns[UserKey]"
                       name="UserKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1045,30 +1299,30 @@ where [refTable].[ID] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\User Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Fill DimCards\User Lookup.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\User Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\User Lookup.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\User Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Fill DimCards\User Lookup.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\User Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Fill DimCards\User Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\User Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Fill DimCards\User Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\User Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Fill DimCards\User Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\User Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Fill DimCards\User Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\User Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Fill DimCards\User Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1079,25 +1333,25 @@ where [refTable].[ID] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
-              endId="Package\Data Flow Task\AccountDate.Inputs[Lookup Input]"
+              refId="Package\Fill DimCards.Paths[Lookup Match Output]"
+              endId="Package\Fill DimCards\AccountDateKey Lookup.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task\User Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Fill DimCards\User Lookup.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
-              endId="Package\Data Flow Task\Expires.Inputs[Lookup Input]"
+              refId="Package\Fill DimCards.Paths[Lookup Match Output1]"
+              endId="Package\Fill DimCards\ExpiresDateKey Lookup.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task\AccountDate.Outputs[Lookup Match Output]" />
+              startId="Package\Fill DimCards\AccountDateKey Lookup.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
-              endId="Package\Data Flow Task\Fill DimCards.Inputs[OLE DB Destination Input]"
+              refId="Package\Fill DimCards.Paths[Lookup Match Output2]"
+              endId="Package\Fill DimCards\Fill DimCards.Inputs[OLE DB Destination Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task\Expires.Outputs[Lookup Match Output]" />
+              startId="Package\Fill DimCards\ExpiresDateKey Lookup.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\User Lookup.Inputs[Lookup Input]"
+              refId="Package\Fill DimCards.Paths[OLE DB Source Output]"
+              endId="Package\Fill DimCards\User Lookup.Inputs[Lookup Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Cards STG.Outputs[OLE DB Source Output]" />
+              startId="Package\Fill DimCards\Cards STG.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1740,11 +1994,15 @@ where [refTable].[ID] = ?</property>
         <NodeLayout
           Size="140,42"
           Id="Package\Fill DimUsers"
-          TopLeft="270.5,81.5" />
+          TopLeft="63.5,28.5" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Fill DimCards"
+          TopLeft="213.5,29.5" />
         <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="5.5,5.5" />
+          TopLeft="367.5,29.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1825,44 +2083,44 @@ where [refTable].[ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\Fill DimCards">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="128,42"
-          Id="Package\Data Flow Task\Cards STG"
-          TopLeft="98.5,32.5" />
+          Id="Package\Fill DimCards\Cards STG"
+          TopLeft="73.5,30.5" />
         <NodeLayout
           Size="138,42"
-          Id="Package\Data Flow Task\User Lookup"
-          TopLeft="264.5,66.5" />
+          Id="Package\Fill DimCards\User Lookup"
+          TopLeft="257.5,69.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="226.5,53.5">
+          Id="Package\Fill DimCards.Paths[OLE DB Source Output]"
+          TopLeft="201.5,51.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="38,34"
+              EndConnector="56,39"
               Start="0,0"
-              End="30.5,34">
+              End="48.5,39">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="15,0" />
+                    End="24,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="15,0"
-                    Point2="19,0"
-                    Point3="19,4" />
+                    Point1="24,0"
+                    Point2="28,0"
+                    Point3="28,4" />
                   <mssgle:LineSegment
-                    End="19,30" />
+                    End="28,35" />
                   <mssgle:CubicBezierSegment
-                    Point1="19,30"
-                    Point2="19,34"
-                    Point3="23,34" />
+                    Point1="28,35"
+                    Point2="28,39"
+                    Point3="32,39" />
                   <mssgle:LineSegment
-                    End="30.5,34" />
+                    End="48.5,39" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1873,97 +2131,121 @@ where [refTable].[ID] = ?</property>
         </EdgeLayout>
         <NodeLayout
           Size="140,42"
-          Id="Package\Data Flow Task\Fill DimCards"
-          TopLeft="226.5,195.5" />
+          Id="Package\Fill DimCards\Fill DimCards"
+          TopLeft="236.5,227.5" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\Data Flow Task\AccountDate"
-          TopLeft="465.5,105.5" />
+          Size="193,42"
+          Id="Package\Fill DimCards\AccountDateKey Lookup"
+          TopLeft="455.5,105.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="402.5,87.5">
+          Id="Package\Fill DimCards.Paths[Lookup Match Output]"
+          TopLeft="395.5,90.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="63,39"
+              EndConnector="60,36"
               Start="0,0"
-              End="55.5,39">
+              End="52.5,36">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="27.5,0" />
+                    End="26,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="27.5,0"
-                    Point2="31.5,0"
-                    Point3="31.5,4" />
+                    Point1="26,0"
+                    Point2="30,0"
+                    Point3="30,4" />
                   <mssgle:LineSegment
-                    End="31.5,35" />
+                    End="30,32" />
                   <mssgle:CubicBezierSegment
-                    Point1="31.5,35"
-                    Point2="31.5,39"
-                    Point3="35.5,39" />
+                    Point1="30,32"
+                    Point2="30,36"
+                    Point3="34,36" />
                   <mssgle:LineSegment
-                    End="55.5,39" />
+                    End="52.5,36" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-16.69138671875,-17.609375,96.3827734375,11.609375"
+              BoundingBox="-18.19138671875,-17.609375,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="113,42"
-          Id="Package\Data Flow Task\Expires"
+          Size="189,42"
+          Id="Package\Fill DimCards\ExpiresDateKey Lookup"
           TopLeft="483.5,202.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
-          TopLeft="537.5,147.5">
+          Id="Package\Fill DimCards.Paths[Lookup Match Output1]"
+          TopLeft="552,147.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="26,55"
               Start="0,0"
-              End="0,47.5">
+              End="26,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="22,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,27.5"
+                    Point2="26,27.5"
+                    Point3="26,31.5" />
+                  <mssgle:LineSegment
+                    End="26,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,17.9453125,96.3827734375,11.609375"
+              BoundingBox="-35.19138671875,32.5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
-          TopLeft="483.5,220">
+          Id="Package\Fill DimCards.Paths[Lookup Match Output2]"
+          TopLeft="483.5,223.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-117,0"
+              EndConnector="-107,25"
               Start="0,0"
-              End="-109.5,0">
+              End="-99.5,25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-109.5,0" />
+                    End="-49.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.5,0"
+                    Point2="-53.5,0"
+                    Point3="-53.5,4" />
+                  <mssgle:LineSegment
+                    End="-53.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-53.5,21"
+                    Point2="-53.5,25"
+                    Point3="-57.5,25" />
+                  <mssgle:LineSegment
+                    End="-99.5,25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-102.94138671875,5,96.3827734375,11.609375"
+              BoundingBox="-101.69138671875,-17.609375,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1971,7 +2253,7 @@ where [refTable].[ID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Cards STG">
+    design-time-name="Package\Fill DimCards\Cards STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1984,7 +2266,7 @@ where [refTable].[ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\User Lookup">
+    design-time-name="Package\Fill DimCards\User Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -2007,7 +2289,7 @@ where [refTable].[ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Fill DimCards">
+    design-time-name="Package\Fill DimCards\Fill DimCards">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2020,7 +2302,7 @@ where [refTable].[ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\AccountDate">
+    design-time-name="Package\Fill DimCards\AccountDateKey Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -2043,7 +2325,7 @@ where [refTable].[ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Expires">
+    design-time-name="Package\Fill DimCards\ExpiresDateKey Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -2062,6 +2344,77 @@ where [refTable].[ID] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Data Flow Task\Get Chip"
+          TopLeft="120.5,35.5" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Data Flow Task\Fill DimChip"
+          TopLeft="292.5,115.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="180,77.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="180,38"
+              Start="0,0"
+              End="180,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="176,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="176,19"
+                    Point2="180,19"
+                    Point3="180,23" />
+                  <mssgle:LineSegment
+                    End="180,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Get Chip">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Fill DimChip">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
