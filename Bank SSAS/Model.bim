@@ -198,84 +198,6 @@
         ]
       },
       {
-        "name": "DimDate",
-        "columns": [
-          {
-            "name": "DateKey",
-            "dataType": "int64",
-            "sourceColumn": "DateKey",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Date",
-            "dataType": "string",
-            "sourceColumn": "Date",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Year",
-            "dataType": "int64",
-            "sourceColumn": "Year",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Month",
-            "dataType": "int64",
-            "sourceColumn": "Month",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Day",
-            "dataType": "int64",
-            "sourceColumn": "Day",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "DayName",
-            "dataType": "string",
-            "sourceColumn": "DayName",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Hour",
-            "dataType": "int64",
-            "sourceColumn": "Hour",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Min",
-            "dataType": "int64",
-            "sourceColumn": "Min",
-            "sourceProviderType": "Integer"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "DimDate",
-            "dataView": "full",
-            "source": {
-              "type": "query",
-              "query": " \t\t\t\tSELECT [DWH].[DimDate].*   FROM [DWH].[DimDate] ",
-              "dataSource": "SqlServer localhost Bank"
-            }
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": " \t\t\t\tSELECT [DWH].[DimDate].*   FROM [DWH].[DimDate] "
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "DimDate"
-          },
-          {
-            "name": "_TM_ExtProp_DbSchemaName",
-            "value": "DWH"
-          }
-        ]
-      },
-      {
         "name": "DimErrors",
         "columns": [
           {
@@ -676,96 +598,177 @@
         ],
         "measures": [
           {
-            "name": "Online Transactions Count",
-            "expression": " CALCULATE( COUNTROWS(FactTransactions) )"
-          },
-          {
-            "name": "Online Total Amount",
+            "name": "Transactions Count",
             "expression": [
               "",
-              "CALCULATE(",
-              "    SUM(FactTransactions[Amount]))"
+              "COUNTROWS(FactTransactions)"
             ]
           },
           {
-            "name": "Online Average Amount",
+            "name": "Total Amount",
+            "expression": [
+              "",
+              "SUM(FactTransactions[Amount])"
+            ]
+          },
+          {
+            "name": "Average Transaction Amount",
             "expression": [
               "",
               "DIVIDE(",
-              "    [Online Total Amount],",
-              "    [Online Transactions Count]",
+              "    [Total Amount],",
+              "    [Transactions Count]",
               ")"
             ]
           },
           {
-            "name": "Online Failed Transactions",
+            "name": "Failed Transactions",
             "expression": [
               "",
               "CALCULATE(",
-              "    COUNTROWS(FactTransactions),FactTransactions[ErrorsKey]<> 10)"
-            ]
-          },
-          {
-            "name": "Fruad Transactions",
-            "expression": [
-              "",
-              "CALCULATE(",
-              "    COUNTROWS(FactTransactions),FactTransactions[Target]= 1",
+              "    COUNTROWS(FactTransactions),",
+              "   FactTransactions[ErrorsKey] <>10",
               ")"
             ]
           },
           {
-            "name": "Online Successful Transactions",
+            "name": "Successful Transactions",
             "expression": [
               "",
               "CALCULATE(",
-              "    COUNTROWS(FactTransactions),FactTransactions[ErrorsKey]= 10)"
+              "    COUNTROWS(FactTransactions),",
+              "   FactTransactions[ErrorsKey] =10",
+              ")"
             ]
           },
           {
-            "name": "Online Success Rate",
+            "name": "Success Rate",
             "expression": [
               "",
               "DIVIDE(",
-              "    [Online Successful Transactions],",
-              "    [Online Transactions Count]",
+              "    [Successful Transactions],",
+              "    [Transactions Count]",
               ")"
             ]
           },
           {
-            "name": "Online Failure Rate",
+            "name": "Failure Rate",
             "expression": [
               "",
               "DIVIDE(",
-              "    [Online Failed Transactions],",
-              "    [Online Transactions Count]",
+              "    [Failed Transactions],",
+              "    [Transactions Count]",
               ")"
             ]
           },
           {
-            "name": "Online Active Users",
+            "name": "Active Users",
             "expression": [
               "",
-              "CALCULATE(",
-              "    DISTINCTCOUNT(FactTransactions[UserKey]))"
+              "DISTINCTCOUNT(FactTransactions[UserKey])"
             ]
           },
           {
-            "name": "Online Spend per User",
+            "name": "Active Cards",
+            "expression": [
+              "",
+              "DISTINCTCOUNT(FactTransactions[CardKey])"
+            ]
+          },
+          {
+            "name": "Transactions per User",
             "expression": [
               "",
               "DIVIDE(",
-              "    [Online Total Amount],",
-              "    [Online Active Users]",
+              "    [Transactions Count],",
+              "    [Active Users]",
               ")"
             ]
           },
           {
-            "name": "Online MCC Amount",
+            "name": "Spend per User",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Total Amount],",
+              "    [Active Users]",
+              ")"
+            ]
+          },
+          {
+            "name": "Targeted Transactions",
             "expression": [
               "",
               "CALCULATE(",
-              "    SUM(FactTransactions[Amount]))"
+              "    [Transactions Count],",
+              "    FactTransactions[Target] = 1",
+              ")"
+            ]
+          },
+          {
+            "name": "Target Rate",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Targeted Transactions],",
+              "    [Transactions Count]",
+              ")"
+            ]
+          },
+          {
+            "name": "Total Amount LY",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Total Amount],",
+              "    SAMEPERIODLASTYEAR(DimDate[Date])",
+              ")"
+            ]
+          },
+          {
+            "name": "YoY Growth %",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Total Amount] - [Total Amount LY],",
+              "    [Total Amount LY]",
+              ")"
+            ]
+          },
+          {
+            "name": "Amount Contribution %",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Total Amount],",
+              "    CALCULATE(",
+              "        [Total Amount],",
+              "        ALLSELECTED(DimMCC)",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "Target Amount",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Total Amount],",
+              "    FactTransactions[Target] = 1",
+              ")"
+            ]
+          },
+          {
+            "name": "Target Failure Rate",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    CALCULATE(",
+              "        [Failed Transactions],",
+              "        FactTransactions[Target] = 1",
+              "    ),",
+              "    [Targeted Transactions]",
+              ")"
             ]
           }
         ],
@@ -777,6 +780,112 @@
           {
             "name": "_TM_ExtProp_DbTableName",
             "value": "FactTransactions"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DateTime",
+            "dataType": "string",
+            "sourceColumn": "Date",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Day",
+            "dataType": "int64",
+            "sourceColumn": "Day",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DayName",
+            "dataType": "string",
+            "sourceColumn": "DayName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Hour",
+            "dataType": "int64",
+            "sourceColumn": "Hour",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "date_",
+            "formatString": "General Date",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate1",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [DWH].[DimDate].*   FROM [DWH].[DimDate] ",
+              "dataSource": "SqlServer localhost Bank"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Hierarchy",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Month",
+                "ordinal": 1,
+                "column": "Month"
+              },
+              {
+                "name": "Day",
+                "ordinal": 2,
+                "column": "Day"
+              },
+              {
+                "name": "Hour",
+                "ordinal": 3,
+                "column": "Hour"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [DWH].[DimDate].*   FROM [DWH].[DimDate] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDate"
           },
           {
             "name": "_TM_ExtProp_DbSchemaName",
@@ -806,28 +915,6 @@
         "fromColumn": "StateKey",
         "toTable": "DimState",
         "toColumn": "StateKey"
-      },
-      {
-        "name": "7a8c7170-4cd6-4ed6-bd12-6b2d7e08d55f",
-        "fromTable": "FactTransactions",
-        "fromColumn": "DateKey",
-        "toTable": "DimDate",
-        "toColumn": "DateKey"
-      },
-      {
-        "name": "1a7803e7-9865-45b1-add0-4e6d28633e4c",
-        "fromTable": "DimCards",
-        "fromColumn": "ExpireDateKey",
-        "toTable": "DimDate",
-        "toColumn": "DateKey"
-      },
-      {
-        "name": "6a7d5de8-ef15-493b-893d-e5571839b8cd",
-        "fromTable": "DimCards",
-        "fromColumn": "AccountOpenDateKey",
-        "toTable": "DimDate",
-        "toColumn": "DateKey",
-        "isActive": false
       },
       {
         "name": "346280bc-1931-4e26-b1f8-d91e41f02cab",
@@ -864,6 +951,28 @@
         "fromColumn": "UseChipKey",
         "toTable": "DimChip",
         "toColumn": "ChipKey"
+      },
+      {
+        "name": "48558102-937d-4762-8650-b7ddad733afd",
+        "fromTable": "DimCards",
+        "fromColumn": "ExpireDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "39e63bd0-8c2d-40bb-ba1f-289327e9f012",
+        "fromTable": "DimCards",
+        "fromColumn": "AccountOpenDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "bdf5d06d-68cf-4bf5-b15f-aa924ddc7d52",
+        "fromTable": "FactTransactions",
+        "fromColumn": "DateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey"
       }
     ],
     "annotations": [
