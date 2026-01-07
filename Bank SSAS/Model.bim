@@ -770,6 +770,14 @@
               "    [Targeted Transactions]",
               ")"
             ]
+          },
+          {
+            "name": "Frauds",
+            "expression": " SUM(FactTransactions[Target])"
+          },
+          {
+            "name": "Natural",
+            "expression": " COUNTROWS(FactTransactions) - [Frauds]"
           }
         ],
         "annotations": [
