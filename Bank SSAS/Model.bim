@@ -469,6 +469,59 @@
             "dataType": "int64",
             "sourceColumn": "NumOfCreditCards",
             "sourceProviderType": "Integer"
+          },
+          {
+            "type": "calculated",
+            "name": "AgeGroup",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "SWITCH(",
+              "    TRUE(),",
+              "    DimUsers[Age] < 20, \"<20\",",
+              "    DimUsers[Age] >= 20 && DimUsers[Age] < 30, \"20-29\",",
+              "    DimUsers[Age] >= 30 && DimUsers[Age] < 40, \"30-39\",",
+              "    DimUsers[Age] >= 40 && DimUsers[Age] < 50, \"40-49\",",
+              "    DimUsers[Age] >= 50 && DimUsers[Age] < 60, \"50-59\",",
+              "    DimUsers[Age] >= 60, \"60+\",",
+              "    \"Unknown\"",
+              ")"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Risk",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "SWITCH(",
+              "    TRUE(),",
+              "    DimUsers[CreditScore] >= 750, \"Low Risk\",",
+              "    DimUsers[CreditScore] >= 650 && DimUsers[CreditScore] < 750, \"Medium Risk\",",
+              "    DimUsers[CreditScore] < 650, \"High Risk\",",
+              "    \"Unknown\"",
+              ")"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "YearlyIncomeGroups",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "SWITCH(",
+              "    TRUE(),",
+              "    DimUsers[YearlyIncome] < 20000, \"<20K\",",
+              "    DimUsers[YearlyIncome] >= 20000 && DimUsers[YearlyIncome] < 50000, \"20K-49K\",",
+              "    DimUsers[YearlyIncome] >= 50000 && DimUsers[YearlyIncome] < 100000, \"50K-99K\",",
+              "    DimUsers[YearlyIncome] >= 100000 && DimUsers[YearlyIncome] < 200000, \"100K-199K\",",
+              "    DimUsers[YearlyIncome] >= 200000, \"200K+\",",
+              "    \"Unknown\"",
+              ")"
+            ]
           }
         ],
         "partitions": [
@@ -480,6 +533,44 @@
               "query": " \t\t\t\tSELECT [DWH].[DimUsers].*   FROM [DWH].[DimUsers] ",
               "dataSource": "SqlServer localhost Bank"
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Females",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(DimUsers),DimUsers[Gender] = \"Female\"",
+              ")"
+            ]
+          },
+          {
+            "name": "AVG Age Male",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    AVERAGE(DimUsers[Age]),DimUsers[Gender] = \"Male\"",
+              ")"
+            ]
+          },
+          {
+            "name": "AVG Age Female",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    AVERAGE(DimUsers[Age]),DimUsers[Gender] = \"Female\"",
+              ")"
+            ]
+          },
+          {
+            "name": "Males",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(DimUsers),DimUsers[Gender] = \"Male\"",
+              ")"
+            ]
           }
         ],
         "annotations": [
@@ -778,6 +869,40 @@
           {
             "name": "Natural",
             "expression": " COUNTROWS(FactTransactions) - [Frauds]"
+          },
+          {
+            "name": "Pass Amount",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    SUM(FactTransactions[Amount]),FactTransactions[ErrorsKey]=10",
+              ")"
+            ]
+          },
+          {
+            "name": "Failed Amount",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    SUM(FactTransactions[Amount]),FactTransactions[ErrorsKey]<>10",
+              ")"
+            ]
+          },
+          {
+            "name": "Visa",
+            "expression": " CALCULATE(sum(FactTransactions[Amount]), DimCards[CardBrand] = \"Visa\")"
+          },
+          {
+            "name": "MasterCard",
+            "expression": " CALCULATE(sum(FactTransactions[Amount]), DimCards[CardBrand] = \"MasterCard\")"
+          },
+          {
+            "name": "Amex",
+            "expression": " CALCULATE(sum(FactTransactions[Amount]), DimCards[CardBrand] = \"Amex\")"
+          },
+          {
+            "name": "Discover",
+            "expression": " CALCULATE(sum(FactTransactions[Amount]), DimCards[CardBrand] = \"Discover\")"
           }
         ],
         "annotations": [
@@ -904,68 +1029,11 @@
     ],
     "relationships": [
       {
-        "name": "7a349d7e-4c50-433b-b38d-34bd9bd20130",
-        "fromTable": "FactTransactions",
-        "fromColumn": "UserKey",
-        "toTable": "DimUsers",
-        "toColumn": "UserKey"
-      },
-      {
         "name": "e6349f02-4640-493f-a129-c34f16855eef",
         "fromTable": "DimUsers",
         "fromColumn": "StreetKey",
         "toTable": "DimStreet",
         "toColumn": "StreetKey"
-      },
-      {
-        "name": "03092a0e-992a-4fd1-9939-59f55241284b",
-        "fromTable": "FactTransactions",
-        "fromColumn": "StateKey",
-        "toTable": "DimState",
-        "toColumn": "StateKey"
-      },
-      {
-        "name": "346280bc-1931-4e26-b1f8-d91e41f02cab",
-        "fromTable": "FactTransactions",
-        "fromColumn": "CardKey",
-        "toTable": "DimCards",
-        "toColumn": "CardKey",
-        "isActive": false
-      },
-      {
-        "name": "0da32ba2-a61b-4bd2-86eb-095ef40de158",
-        "fromTable": "FactTransactions",
-        "fromColumn": "ErrorsKey",
-        "toTable": "DimErrors",
-        "toColumn": "ErrorsKey"
-      },
-      {
-        "name": "63b9c882-7a62-4374-9e19-1cdffc30fa19",
-        "fromTable": "FactTransactions",
-        "fromColumn": "ZIP",
-        "toTable": "DimMCC",
-        "toColumn": "MCCKey"
-      },
-      {
-        "name": "93da1fa4-bffb-473c-b687-7970711d1918",
-        "fromTable": "FactTransactions",
-        "fromColumn": "CityKey",
-        "toTable": "DimCity",
-        "toColumn": "CityKey"
-      },
-      {
-        "name": "e0f0199d-09de-43b9-b852-b9ce5cfb5bab",
-        "fromTable": "FactTransactions",
-        "fromColumn": "UseChipKey",
-        "toTable": "DimChip",
-        "toColumn": "ChipKey"
-      },
-      {
-        "name": "48558102-937d-4762-8650-b7ddad733afd",
-        "fromTable": "DimCards",
-        "fromColumn": "ExpireDateKey",
-        "toTable": "DimDate",
-        "toColumn": "DateKey"
       },
       {
         "name": "39e63bd0-8c2d-40bb-ba1f-289327e9f012",
@@ -976,11 +1044,76 @@
         "isActive": false
       },
       {
-        "name": "bdf5d06d-68cf-4bf5-b15f-aa924ddc7d52",
+        "name": "48558102-937d-4762-8650-b7ddad733afd",
+        "fromTable": "DimCards",
+        "fromColumn": "ExpireDateKey",
+        "toTable": "DimDate",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "32930a08-f63d-400d-a518-81c4d815345d",
+        "fromTable": "FactTransactions",
+        "fromColumn": "MCCKey",
+        "toTable": "DimMCC",
+        "toColumn": "MCCKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "6f347ef8-1db9-428e-a30f-fc2bda20f864",
+        "fromTable": "FactTransactions",
+        "fromColumn": "CardKey",
+        "toTable": "DimCards",
+        "toColumn": "CardKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "6e598231-bbd8-4c5b-a9b3-0e96f2b61a06",
+        "fromTable": "FactTransactions",
+        "fromColumn": "UserKey",
+        "toTable": "DimUsers",
+        "toColumn": "UserKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "2cf92e33-3c5f-4243-afaf-51bc9cdaecac",
+        "fromTable": "FactTransactions",
+        "fromColumn": "ErrorsKey",
+        "toTable": "DimErrors",
+        "toColumn": "ErrorsKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "364451ce-2148-4e60-ab3f-4803dd55e5ea",
+        "fromTable": "FactTransactions",
+        "fromColumn": "StateKey",
+        "toTable": "DimState",
+        "toColumn": "StateKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "35d57cfc-30bc-4ac0-b162-024920dd8fca",
+        "fromTable": "FactTransactions",
+        "fromColumn": "UseChipKey",
+        "toTable": "DimChip",
+        "toColumn": "ChipKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "d0a5ec6e-c6af-4cf2-9bd9-4b4ee7b50933",
         "fromTable": "FactTransactions",
         "fromColumn": "DateKey",
         "toTable": "DimDate",
-        "toColumn": "DateKey"
+        "toColumn": "DateKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "0ea40e02-b85b-424b-8edf-cd101d28323e",
+        "fromTable": "FactTransactions",
+        "fromColumn": "CityKey",
+        "toTable": "DimCity",
+        "toColumn": "CityKey",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "annotations": [
